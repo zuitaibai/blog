@@ -155,7 +155,7 @@ theme: wikitten
 deploy:
 - type: git
   repo: git@github.com:zuitaibai/blog.git
-  branch: hexo
+  branch: main
 #
 # - type: git
 #   repo: git@gitee.com:zuitaibai/myBlog.git
