@@ -1,0 +1,12 @@
+<% if (post.updated) { %>
+    <% if (post.date && post.date.isSame(post.updated)) { %>
+
+    <% } else {%>
+    <div class="<%= class_name %>">
+        <i class="fa fa-edit"></i>
+        <a href="<%- url_for(post.path) %>">
+            <time datetime="<%= date_xml(post.updated) %>" itemprop="dateUpdated"><%= date(post.updated, date_format) %></time>
+        </a>
+    </div>
+    <% } %>
+<% } %>
