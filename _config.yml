@@ -99,9 +99,9 @@ sitemap:
 nofollow:
   enable: true
   exclude:
-    - <your site url domain> # eg: zthxxx.me
+    - <your site url domain> # eg: zuitaibai.me
 
-## https://github.com/zthxxx/hexo-directory-category
+## https://github.com/zuitaibai/hexo-directory-category
 auto_dir_categorize:
   enable: true  # options:true, false; default is true
   force: true # options:true, false; default is false
@@ -113,7 +113,7 @@ root: /blog/
 # order_by: Posts order. (Order by date descending by default)
 index_generator:
   path: ''
-  per_page: 8
+  per_page: 7
   order_by: -date
 
 # Category & Tag
@@ -145,6 +145,15 @@ include:
 exclude:
 ignore:
 
+# 配置mathjax渲染
+## 首先安装pandoc，同时在hexo站点下修改渲染引擎：
+## npm un hexo-renderer-marked --save
+## npm i hexo-renderer-pandoc --save # or hexo-renderer-kramed
+## 本博先用hexo-renderer-pandoc报错。后采用hexo-renderer-kramed正常。
+math:
+  enable: true
+  engine: mathjax
+
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
@@ -156,7 +165,7 @@ deploy:
 - type: git
   repo: git@github.com:zuitaibai/blog.git
   branch: main
-#
-# - type: git
-#   repo: git@gitee.com:zuitaibai/myBlog.git
-#   branch: master
+
+- type: git
+  repo: git@gitee.com:zuitaibai/blog.git
+  branch: main
