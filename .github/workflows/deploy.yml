@@ -5,8 +5,12 @@ on:
     branches:
       - hexo
 
+env:
+  TZ: Asia/Shanghai
+
 jobs:
-  build:
+  blog-cicd:
+    name: Hexo blog build & deploy
     runs-on: ubuntu-18.04
     if: github.event.repository.owner.id == github.event.sender.id
 
@@ -21,6 +25,13 @@ jobs:
         with:
           node-version: '12'
 
+      - name: Cache node modules
+        # 设置包缓存目录，避免每次下载
+        uses: actions/cache@v1
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+
       - name: Setup Hexo
         env:
           ACTION_DEPLOY_KEY: ${{ secrets.HEXO_DEPLOY_KEY }}
@@ -30,12 +41,31 @@ jobs:
           chmod 700 ~/.ssh
           chmod 600 ~/.ssh/id_rsa
           ssh-keyscan github.com >> ~/.ssh/known_hosts
+          ssh-keyscan gitee.com >> ~/.ssh/known_hosts
           git config --global user.email "gonghan007@163.com"
           git config --global user.name "zuitaibai"
           npm install hexo-cli -g
           npm install
 
+      # 基于项目config.yml中的deploy字段进行github和gitee同时布署
       - name: Deploy
         run: |
           hexo clean
           hexo deploy
+
+      # 执行hexo generate后，手动进入public文件夹对github和gitee分别进行push（效果未试）。
+      # - name: Generate files
+        # run: |
+          # hexo clean
+          # hexo generate
+
+      # - name: Deploy hexo blog
+        # env:
+          # GITHUB_REPO: github.com/zuitaibai/blog.git
+          # GITEE_REPO: gitee.com/zuitaibai/blog.git
+        # run: |
+          # cd ./public && git init && git add .
+          # git add .
+          # git commit -m "GitHub Actions Auto Builder at $(date +'%Y-%m-%d %H:%M:%S')"
+          # git push --force --quiet "https://${{ secrets.HEXO_DEPLOY_KEY }}@$GITHUB_REPO" master:main
+          # git push --force --quiet "https://zuitaibai:${{ secrets.HEXO_DEPLOY_KEY }}@$GITEE_REPO" master:main
