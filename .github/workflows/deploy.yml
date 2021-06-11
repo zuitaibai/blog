@@ -54,6 +54,7 @@ jobs:
       # 基于项目config.yml中的deploy字段进行github和gitee同时布署
       - name: Deploy
         run: |
+          rm -rf .deploy_git
           hexo clean
           hexo deploy
 
