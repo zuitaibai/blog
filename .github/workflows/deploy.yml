@@ -44,8 +44,12 @@ jobs:
           ssh-keyscan gitee.com >> ~/.ssh/known_hosts
           git config --global user.email "gonghan007@163.com"
           git config --global user.name "zuitaibai"
-          npm install hexo-cli -g
-          npm install
+
+      # 原 npm install 在linux下有报错：hexo-cli中的深层依赖fsevents是mac平台下的，故报错。在此强制安装
+          npm install hexo-cli -g -f
+
+      # 原 npm install 在linux下有报错：项目中的深层依赖fsevents是mac平台下的，故报错。在此强制安装
+          npm install -f
 
       # 基于项目config.yml中的deploy字段进行github和gitee同时布署
       - name: Deploy
