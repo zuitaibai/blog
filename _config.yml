@@ -145,15 +145,6 @@ include:
 exclude:
 ignore:
 
-# 配置mathjax渲染
-## 首先安装pandoc，同时在hexo站点下修改渲染引擎：
-## npm un hexo-renderer-marked --save
-## npm i hexo-renderer-pandoc --save # or hexo-renderer-kramed
-## 本博先用hexo-renderer-pandoc报错。后采用hexo-renderer-kramed正常。
-math:
-  enable: true
-  engine: mathjax
-
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
