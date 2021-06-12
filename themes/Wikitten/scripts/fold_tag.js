@@ -14,4 +14,4 @@ function fold (args, content) {
                 </div>
             </div>`;
 }
-hexo.extend.tag.register('fold', fold, {ends: true, async: true});
+hexo.extend.tag.register('fold', fold, {ends: true});
