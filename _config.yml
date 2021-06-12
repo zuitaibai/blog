@@ -152,11 +152,18 @@ theme: wikitten
 
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
-deploy:
-- type: git
-  repo: git@github.com:zuitaibai/blog.git
-  branch: main
+# deploy:
+# - type: git
+  # repo: git@github.com:zuitaibai/blog.git
+  # branch: main
 
-- type: git
-  repo: git@gitee.com:zuitaibai/blog.git
-  branch: main
+# - type: git
+  # repo: git@gitee.com:zuitaibai/blog.git
+  # branch: main
+
+deploy:
+  type: 'git'
+  repo:
+    github: 'git@github.com:zuitaibai/blog.git'
+    gitee: 'git@gitee.com:zuitaibai/blog.git'
+  branch: 'main'
