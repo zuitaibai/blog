@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    
+    <title>ng实现计算器-绑定键盘 | …酉</title>
+    
+    
+        <meta name="keywords" content="angular,ng,calc">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="在此记录一个简单的计算器实现 github action try3。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ng实现计算器-绑定键盘">
+<meta property="og:url" content="https://zuitaibai.github.io/blog/2019/04/11/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6-angular-2019-4-11-ng%E5%AE%9E%E7%8E%B0%E8%AE%A1%E7%AE%97%E5%99%A8-%E7%BB%91%E5%AE%9A%E9%94%AE%E7%9B%98/index.html">
+<meta property="og:site_name" content="…酉">
+<meta property="og:description" content="在此记录一个简单的计算器实现 github action try3。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2019-04-11T02:20:01.000Z">
+<meta property="article:modified_time" content="2019-04-11T02:21:01.000Z">
+<meta property="article:author" content="zuitaibai">
+<meta property="article:tag" content="angular">
+<meta property="article:tag" content="ng">
+<meta property="article:tag" content="calc">
+<meta name="twitter:card" content="summary">
+    
+
+    
+        <link rel="alternate" href="/atom.xml" title="…酉" type="application/atom+xml">
+    
+
+    
+        <link rel="icon" href="/blog/blog/favicon.ico">
+    
+
+    
+<link rel="stylesheet" href="/blog/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/blog/libs/open-sans/styles.css">
+
+    
+<link rel="stylesheet" href="/blog/libs/source-code-pro/styles.css">
+
+
+    
+<link rel="stylesheet" href="/blog/css/style.css">
+
+    
+<script src="/blog/libs/jquery/2.1.3/jquery.min.js"></script>
+
+    
+<script src="/blog/libs/jquery/plugins/cookie/1.4.1/jquery.cookie.js"></script>
+
+    
+    
+        
+<link rel="stylesheet" href="/blog/libs/lightgallery/css/lightgallery.min.css">
+
+    
+    
+        
+<link rel="stylesheet" href="/blog/libs/justified-gallery/justifiedGallery.min.css">
+
+    
+    
+    
+    
+
+
+    
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/blog/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">…酉</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/blog/">首页</a>
+                
+                    <a class="main-nav-link" href="/blog/archives">归档</a>
+                
+                    <a class="main-nav-link" href="/blog/categories">分类</a>
+                
+                    <a class="main-nav-link" href="/blog/tags">标签</a>
+                
+                    <a class="main-nav-link" href="/blog/about">关于</a>
+                
+            </nav>
+            
+            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索">
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="想要查找什么...">
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/blog/',
+        CONTENT_URL: '/blog/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/blog/js/insight.js"></script>
+
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/blog/">首页</a></td>
+                
+                    <td><a class="main-nav-link" href="/blog/archives">归档</a></td>
+                
+                    <td><a class="main-nav-link" href="/blog/categories">分类</a></td>
+                
+                    <td><a class="main-nav-link" href="/blog/tags">标签</a></td>
+                
+                    <td><a class="main-nav-link" href="/blog/about">关于</a></td>
+                
+                <td>
+                    
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索">
+    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+            
+                <aside id="sidebar">
+   
+        
+    <div class="widget-wrap" id="categories">
+        <h3 class="widget-title">
+            <span>分类</span>
+            &nbsp;
+            <a id="allExpand" href="#">
+                <i class="fa fa-angle-double-down fa-2x"></i>
+            </a>
+        </h3>
+
+        
+        
+         <ul class="unstyled" id="tree"> 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            Css
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/blog/2016/05/25/Css-2016-05-25-css%E6%8E%A7%E5%88%B6%E9%9D%9Eli%E7%9A%84%E9%A1%B9%E7%9B%AE%E7%AC%A6%E5%8F%B7/">css控制非li的项目符号</a></li>  </ul> 
+                    </li>
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            Ecmascript
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/blog/2015/12/14/Ecmascript-2015-12-14-%E5%86%99%E4%BA%86%E4%B8%AA%E5%B8%A6%E5%89%8D%E5%90%8E%E7%9C%81%E7%95%A5%E5%8F%B7%E7%9A%84js%E5%88%86%E9%A1%B5/">写了个带前后省略号的js分页</a></li>  <li class="file"><a href="/blog/2016/05/27/Ecmascript-2016-05-27-javascript%E5%8A%A8%E7%94%BB%E5%AE%9E%E7%8E%B0%EF%BC%88%E8%BD%AC%EF%BC%89/">javascript动画实现（转）</a></li>  </ul> 
+                    </li>
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            Html
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/blog/2016/05/26/Html-%E4%B8%80%E5%83%8F%E7%B4%A0%E8%BE%B9%E6%A1%86%E8%A1%A8%E6%A0%BC%E7%9A%84%E5%87%A0%E7%A7%8D%E5%AE%9E%E7%8E%B0%E6%96%B9%E6%B3%95/">一像素边框表格的几种实现方法</a></li>  <li class="file"><a href="/blog/2016/06/12/Html-2016-06-12-%E7%89%B9%E6%AE%8A%E7%AC%A6%E5%8F%B7/">特殊符号</a></li>  </ul> 
+                    </li>
+                    
+                    <li class="directory open">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder-open"></i>
+                            &nbsp;
+                            前端框架
+                        </a>
+                         <ul class="unstyled" id="tree"> 
+                    <li class="directory open">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder-open"></i>
+                            &nbsp;
+                            angular
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/blog/2019/03/12/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6-angular-2019-03-12-ngCli%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">ng-cli常用命令</a></li>  <li class="file"><a href="/blog/2019/04/11/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6-angular-2019-04-11-ng%E5%AE%9E%E7%8E%B0RadioGroup-CheckboxGroup%E7%BB%84%E4%BB%B6/">ng实现RadioGroup/CheckboxGroup组件</a></li>  <li class="file"><a href="/blog/2019/04/11/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6-angular-2019-04-11-ng%E5%AE%9E%E7%8E%B0%E5%88%86%E9%A1%B5%E7%BB%84%E4%BB%B6/">ng实现分页组件</a></li>  <li class="file active"><a href="/blog/2019/04/11/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6-angular-2019-4-11-ng%E5%AE%9E%E7%8E%B0%E8%AE%A1%E7%AE%97%E5%99%A8-%E7%BB%91%E5%AE%9A%E9%94%AE%E7%9B%98/">ng实现计算器-绑定键盘</a></li>  </ul> 
+                    </li>
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            react
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/blog/2017/03/02/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6-react-2017-03-02-react-router-%E6%8C%89%E9%9C%80%E5%8A%A0%E8%BD%BD/">react-router 按需加载（转）</a></li>  </ul> 
+                    </li>
+                     </ul> 
+                    </li>
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            常用工具和插件
+                        </a>
+                         <ul class="unstyled" id="tree"> 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            IDE
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/blog/2017/02/03/%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7%E5%92%8C%E6%8F%92%E4%BB%B6-IDE-2017-02-03-Vim%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91%E5%91%BD%E4%BB%A4/">Vim文本编辑命令</a></li>  </ul> 
+                    </li>
+                     </ul> 
+                    </li>
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            开发流程
+                        </a>
+                         <ul class="unstyled" id="tree"> 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            git
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/blog/2017/02/03/%E5%BC%80%E5%8F%91%E6%B5%81%E7%A8%8B-git-2017-02-03-git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">git常用命令</a></li>  </ul> 
+                    </li>
+                     </ul> 
+                    </li>
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            服务端
+                        </a>
+                         <ul class="unstyled" id="tree"> 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            nginx
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/blog/2017/03/29/%E6%9C%8D%E5%8A%A1%E7%AB%AF-nginx-2017-03-29-nginx-conf/">nginx.conf</a></li>  </ul> 
+                    </li>
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            nodejs
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/blog/2016/05/27/%E6%9C%8D%E5%8A%A1%E7%AB%AF-nodejs-2016-05-27-nodejs%E7%AE%80%E6%98%93server%E7%8E%AF%E5%A2%83%E5%8F%8A%E7%AE%80%E6%98%93%E6%8E%A5%E5%8F%A3%E8%B7%AF%E7%94%B1%E5%86%99%E5%9C%A8%E4%B8%80%E8%B5%B7/">nodejs简易server环境及简易接口路由写在一起</a></li>  <li class="file"><a href="/blog/2016/05/27/%E6%9C%8D%E5%8A%A1%E7%AB%AF-nodejs-2016-05-27-nodejs%E7%AE%80%E6%98%93server%E7%8E%AF%E5%A2%83%E5%8F%8A%E7%AE%80%E6%98%93%E6%8E%A5%E5%8F%A3%E8%B7%AF%E7%94%B1%E5%86%99%E5%9C%A8%E4%B8%80%E8%B5%B7%EF%BC%88%E4%BA%8C%EF%BC%89/">nodejs简易server环境及简易接口路由写在一起（二）</a></li>  <li class="file"><a href="/blog/2017/02/03/%E6%9C%8D%E5%8A%A1%E7%AB%AF-nodejs-2017-02-03-npm%E5%91%BD%E4%BB%A4/">npm命令</a></li>  <li class="file"><a href="/blog/2018/04/21/%E6%9C%8D%E5%8A%A1%E7%AB%AF-nodejs-2018-04-21-%E7%AE%80%E6%98%93nodeserver%EF%BC%8C%E5%90%ABmock/">简易nodeserver，含mock</a></li>  </ul> 
+                    </li>
+                     </ul> 
+                    </li>
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            移动端
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/blog/2016/05/27/%E7%A7%BB%E5%8A%A8%E7%AB%AF-2016-05-27-pc%E5%92%8C%E7%A7%BB%E5%8A%A8%E7%AB%AF%E7%9A%84js%E6%8B%96%E6%8B%BD%E7%AE%80%E6%98%93%E5%87%BD%E6%95%B0/">pc和移动端的js拖拽简易函数</a></li>  <li class="file"><a href="/blog/2016/06/13/%E7%A7%BB%E5%8A%A8%E7%AB%AF-2013-06-13-%E6%89%8B%E6%9C%BA%E7%BD%91%E7%AB%99%E7%9A%84%E5%87%A0%E7%82%B9%E6%B3%A8%E6%84%8F%EF%BC%88%E8%BD%AC%EF%BC%89/">手机网站的几点注意（转）</a></li>  </ul> 
+                    </li>
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            网络和通讯
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/blog/2016/06/13/%E7%BD%91%E7%BB%9C%E5%92%8C%E9%80%9A%E8%AE%AF-2016-06-13-HTTP%E7%8A%B6%E6%80%81%E7%A0%81%E8%AF%A6%E8%A7%A3%E5%88%97%E8%A1%A8/">HTTP状态码详解列表</a></li>  </ul> 
+                    </li>
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            计算机基础
+                        </a>
+                         <ul class="unstyled" id="tree"> 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            编码
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/blog/2016/06/12/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E7%BC%96%E7%A0%81-2016-06-12-%E5%AD%97%E7%AC%A6%E9%9B%86%E5%92%8C%E5%AD%97%E7%AC%A6%E7%BC%96%E7%A0%81/">字符集和字符编码</a></li>  <li class="file"><a href="/blog/2016/06/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E7%BC%96%E7%A0%81-2016-06-13-%E5%AD%97%E4%BD%93%E7%9A%84%E4%B8%AD-%E8%8B%B1-Unicode%E5%AF%B9%E7%85%A7%E8%A1%A8/">字体的中-英-Unicode对照表</a></li>  </ul> 
+                    </li>
+                     </ul> 
+                    </li>
+                     </ul> 
+    </div>
+    <script>
+        $(document).ready(function() {
+            var iconFolderOpenClass  = 'fa-folder-open';
+            var iconFolderCloseClass = 'fa-folder';
+            var iconAllExpandClass = 'fa-angle-double-down';
+            var iconAllPackClass = 'fa-angle-double-up';
+            // Handle directory-tree expansion:
+            // 左键单独展开目录
+            $(document).on('click', '#categories a[data-role="directory"]', function (event) {
+                event.preventDefault();
+
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconFolderOpenClass);
+                var subtree = $(this).siblings('ul');
+                icon.removeClass(iconFolderOpenClass).removeClass(iconFolderCloseClass);
+                if (expanded) {
+                    if (typeof subtree != 'undefined') {
+                        subtree.slideUp({ duration: 100 });
+                    }
+                    icon.addClass(iconFolderCloseClass);
+                } else {
+                    if (typeof subtree != 'undefined') {
+                        subtree.slideDown({ duration: 100 });
+                    }
+                    icon.addClass(iconFolderOpenClass);
+                }
+            });
+            // 右键展开下属所有目录
+            $('#categories a[data-role="directory"]').bind("contextmenu", function(event){
+                event.preventDefault();
+
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconFolderOpenClass);
+                var listNode = $(this).siblings('ul');
+                var subtrees = $.merge(listNode.find('li ul'), listNode);
+                var icons = $.merge(listNode.find('.fa'), icon);
+                icons.removeClass(iconFolderOpenClass).removeClass(iconFolderCloseClass);
+                if(expanded) {
+                    subtrees.slideUp({ duration: 100 });
+                    icons.addClass(iconFolderCloseClass);
+                } else {
+                    subtrees.slideDown({ duration: 100 });
+                    icons.addClass(iconFolderOpenClass);
+                }
+            })
+            // 展开关闭所有目录按钮
+            $(document).on('click', '#allExpand', function (event) {
+                event.preventDefault();
+
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconAllExpandClass);
+                icon.removeClass(iconAllExpandClass).removeClass(iconAllPackClass);
+                if(expanded) {
+                    $('#sidebar .fa.fa-folder').removeClass('fa-folder').addClass('fa-folder-open')
+                    $('#categories li ul').slideDown({ duration: 100 });
+                    icon.addClass(iconAllPackClass);
+                } else {
+                    $('#sidebar .fa.fa-folder-open').removeClass('fa-folder-open').addClass('fa-folder')
+                    $('#categories li ul').slideUp({ duration: 100 });
+                    icon.addClass(iconAllExpandClass);
+                }
+            });
+        });
+    </script>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title"><span>标签云</span></h3>
+        <div class="widget tagcloud">
+            <a href="/blog/tags/CheckboxGroup/" style="font-size: 10px;">CheckboxGroup</a> <a href="/blog/tags/HTTP%E7%8A%B6%E6%80%81%E7%A0%81/" style="font-size: 10px;">HTTP状态码</a> <a href="/blog/tags/RadioGroup/" style="font-size: 10px;">RadioGroup</a> <a href="/blog/tags/Unicode/" style="font-size: 10px;">Unicode</a> <a href="/blog/tags/angular/" style="font-size: 15px;">angular</a> <a href="/blog/tags/angular-cli/" style="font-size: 10px;">angular-cli</a> <a href="/blog/tags/calc/" style="font-size: 10px;">calc</a> <a href="/blog/tags/conf/" style="font-size: 10px;">conf</a> <a href="/blog/tags/css%E5%B0%8F%E6%8A%80%E5%B7%A7/" style="font-size: 10px;">css小技巧</a> <a href="/blog/tags/drag/" style="font-size: 10px;">drag</a> <a href="/blog/tags/git/" style="font-size: 10px;">git</a> <a href="/blog/tags/js/" style="font-size: 15px;">js</a> <a href="/blog/tags/ng/" style="font-size: 20px;">ng</a> <a href="/blog/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/blog/tags/nodejs/" style="font-size: 20px;">nodejs</a> <a href="/blog/tags/npm/" style="font-size: 10px;">npm</a> <a href="/blog/tags/paging/" style="font-size: 10px;">paging</a> <a href="/blog/tags/react/" style="font-size: 10px;">react</a> <a href="/blog/tags/react-router/" style="font-size: 10px;">react-router</a> <a href="/blog/tags/router/" style="font-size: 10px;">router</a> <a href="/blog/tags/table/" style="font-size: 10px;">table</a> <a href="/blog/tags/vim/" style="font-size: 10px;">vim</a> <a href="/blog/tags/%E4%B8%80%E5%83%8F%E7%B4%A0/" style="font-size: 10px;">一像素</a> <a href="/blog/tags/%E5%88%86%E9%A1%B5/" style="font-size: 10px;">分页</a> <a href="/blog/tags/%E5%8A%A8%E7%94%BB/" style="font-size: 10px;">动画</a> <a href="/blog/tags/%E5%91%BD%E4%BB%A4/" style="font-size: 20px;">命令</a> <a href="/blog/tags/%E5%AD%97%E4%BD%93/" style="font-size: 10px;">字体</a> <a href="/blog/tags/%E5%AD%97%E7%AC%A6%E7%BC%96%E7%A0%81/" style="font-size: 10px;">字符编码</a> <a href="/blog/tags/%E5%AD%97%E7%AC%A6%E9%9B%86/" style="font-size: 10px;">字符集</a> <a href="/blog/tags/%E6%8B%96%E6%8B%BD/" style="font-size: 10px;">拖拽</a> <a href="/blog/tags/%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6/" style="font-size: 10px;">版本控制</a> <a href="/blog/tags/%E7%89%B9%E6%AE%8A%E7%AC%A6%E5%8F%B7/" style="font-size: 10px;">特殊符号</a> <a href="/blog/tags/%E7%A7%BB%E5%8A%A8%E7%AB%AF/" style="font-size: 10px;">移动端</a> <a href="/blog/tags/%E8%A1%A8%E6%A0%BC/" style="font-size: 10px;">表格</a> <a href="/blog/tags/%E8%B7%AF%E7%94%B1/" style="font-size: 15px;">路由</a> <a href="/blog/tags/%E9%80%9F%E6%9F%A5%E8%A1%A8/" style="font-size: 15px;">速查表</a>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title"><span>最新文章</span></h3>
+        <div class="widget">
+            <ul id="recent-post" class>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/blog/2019/04/11/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6-angular-2019-4-11-ng%E5%AE%9E%E7%8E%B0%E8%AE%A1%E7%AE%97%E5%99%A8-%E7%BB%91%E5%AE%9A%E9%94%AE%E7%9B%98/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/blog/categories/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6/">前端框架</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/blog/categories/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6/angular/">angular</a></p>
+                            <p class="item-title"><a href="/blog/2019/04/11/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6-angular-2019-4-11-ng%E5%AE%9E%E7%8E%B0%E8%AE%A1%E7%AE%97%E5%99%A8-%E7%BB%91%E5%AE%9A%E9%94%AE%E7%9B%98/" class="title">ng实现计算器-绑定键盘</a></p>
+                            <p class="item-date"><time datetime="2019-04-11T02:20:01.000Z" itemprop="datePublished">2019-04-11</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/blog/2019/04/11/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6-angular-2019-04-11-ng%E5%AE%9E%E7%8E%B0%E5%88%86%E9%A1%B5%E7%BB%84%E4%BB%B6/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/blog/categories/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6/">前端框架</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/blog/categories/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6/angular/">angular</a></p>
+                            <p class="item-title"><a href="/blog/2019/04/11/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6-angular-2019-04-11-ng%E5%AE%9E%E7%8E%B0%E5%88%86%E9%A1%B5%E7%BB%84%E4%BB%B6/" class="title">ng实现分页组件</a></p>
+                            <p class="item-date"><time datetime="2019-04-11T02:14:00.000Z" itemprop="datePublished">2019-04-11</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/blog/2019/04/11/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6-angular-2019-04-11-ng%E5%AE%9E%E7%8E%B0RadioGroup-CheckboxGroup%E7%BB%84%E4%BB%B6/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/blog/categories/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6/">前端框架</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/blog/categories/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6/angular/">angular</a></p>
+                            <p class="item-title"><a href="/blog/2019/04/11/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6-angular-2019-04-11-ng%E5%AE%9E%E7%8E%B0RadioGroup-CheckboxGroup%E7%BB%84%E4%BB%B6/" class="title">ng实现RadioGroup/CheckboxGroup组件</a></p>
+                            <p class="item-date"><time datetime="2019-04-11T02:04:54.000Z" itemprop="datePublished">2019-04-11</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/blog/2019/03/12/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6-angular-2019-03-12-ngCli%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/blog/categories/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6/">前端框架</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/blog/categories/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6/angular/">angular</a></p>
+                            <p class="item-title"><a href="/blog/2019/03/12/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6-angular-2019-03-12-ngCli%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" class="title">ng-cli常用命令</a></p>
+                            <p class="item-date"><time datetime="2019-03-12T03:25:07.000Z" itemprop="datePublished">2019-03-12</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/blog/2018/04/21/%E6%9C%8D%E5%8A%A1%E7%AB%AF-nodejs-2018-04-21-%E7%AE%80%E6%98%93nodeserver%EF%BC%8C%E5%90%ABmock/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/blog/categories/%E6%9C%8D%E5%8A%A1%E7%AB%AF/">服务端</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/blog/categories/%E6%9C%8D%E5%8A%A1%E7%AB%AF/nodejs/">nodejs</a></p>
+                            <p class="item-title"><a href="/blog/2018/04/21/%E6%9C%8D%E5%8A%A1%E7%AB%AF-nodejs-2018-04-21-%E7%AE%80%E6%98%93nodeserver%EF%BC%8C%E5%90%ABmock/" class="title">简易nodeserver，含mock</a></p>
+                            <p class="item-date"><time datetime="2018-04-21T08:06:33.000Z" itemprop="datePublished">2018-04-21</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title"><span>归档</span></h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2019/04/">四月 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2019/03/">三月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2018/04/">四月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2017/03/">三月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2017/02/">二月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2016/06/">六月 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2016/05/">五月 2016</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2015/12/">十二月 2015</a><span class="archive-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title"><span>链接</span></h3>
+        <div class="widget">
+            <ul>
+                
+            </ul>
+        </div>
+    </div>
+
+
+    
+    <div id="toTop" class="fa fa-angle-up"></div>
+</aside>
+            
+            <section id="main"><article id="post-前端框架-angular-2019-4-11-ng实现计算器-绑定键盘" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+                    <div class="article-meta">
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/blog/categories/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6/">前端框架</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/blog/categories/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6/angular/">angular</a>
+    </div>
+
+
+                        
+
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/blog/2019/04/11/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6-angular-2019-4-11-ng%E5%AE%9E%E7%8E%B0%E8%AE%A1%E7%AE%97%E5%99%A8-%E7%BB%91%E5%AE%9A%E9%94%AE%E7%9B%98/">
+            <time datetime="2019-04-11T02:20:01.000Z" itemprop="datePublished">2019-04-11</time>
+        </a>
+    </div>
+
+
+                        
+    
+    <div class="ztb-article-update">
+        <i class="fa fa-edit"></i>
+        <a href="/blog/2019/04/11/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6-angular-2019-4-11-ng%E5%AE%9E%E7%8E%B0%E8%AE%A1%E7%AE%97%E5%99%A8-%E7%BB%91%E5%AE%9A%E9%94%AE%E7%9B%98/">
+            <time datetime="2019-04-11T02:21:01.000Z" itemprop="dateUpdated">2019-04-11</time>
+        </a>
+    </div>
+    
+
+
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link-link" href="/blog/tags/angular/" rel="tag">angular</a>, <a class="tag-link-link" href="/blog/tags/calc/" rel="tag">calc</a>, <a class="tag-link-link" href="/blog/tags/ng/" rel="tag">ng</a>
+    </div>
+
+
+
+                        
+                        
+                    </div>
+                
+                
+                
+    
+        <h1 class="article-title article-title-noindex" itemprop="name">
+            ng实现计算器-绑定键盘
+        </h1>
+    
+
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+        
+            
+                <div id="toc" class="toc-article">
+                <strong class="toc-title">本文大纲</strong>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%A0%B7%E5%BC%8F%EF%BC%9Acalculator-component-css"><span class="toc-number">1.</span> <span class="toc-text">样式：calculator.component.css</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%A8%A1%E6%9D%BF%EF%BC%9Acalculator-component-html"><span class="toc-number">2.</span> <span class="toc-text">模板：calculator.component.html</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#TS%EF%BC%9Acalculator-component-ts"><span class="toc-number">3.</span> <span class="toc-text">TS：calculator.component.ts</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#TS%EF%BC%9Acalc-ts"><span class="toc-number">4.</span> <span class="toc-text">TS：calc.ts</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%EF%BC%9A"><span class="toc-number">5.</span> <span class="toc-text">使用：</span></a></li></ol>
+                </div>
+            
+        
+        
+            <p>在此记录一个简单的计算器实现 github action try3。</p>
+<span id="more"></span>
+
+
+
+
+
+<h1 id="样式：calculator-component-css"><a href="#样式：calculator-component-css" class="headerlink" title="样式：calculator.component.css"></a>样式：calculator.component.css</h1><div class="fold_hider-w">
+                <div class="fold_hider">
+                    <div class="hider_title">
+                        <span class="hider_title_zd">代码折叠</span>
+                        <span class="hider_title_zk">代码展开</span>
+                    </div>
+                </div>
+                <div class="fold">
+                <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">.calc&#123; position: fixed; right: 0; bottom: 0; z-index: 999; &#125;</span><br><span class="line">.chacha&#123; cursor: pointer; color:<span class="comment">#fff; position:absolute;text-decoration:none; font-weight: 600;right:0;top:-17px;text-decoration:none;font-weight: 600;background: #555;padding: 0 2px; &#125;</span></span><br><span class="line">.calc td &#123; user-select: none; cursor: pointer;border-bottom:1px solid <span class="comment">#fff; background-color:#303133; width: 70px; height: 44px; color: white; text-align: center; font-size: 20px; padding:0!important; &#125;</span></span><br><span class="line">.calc td ~ td&#123;border-left:1px solid <span class="comment">#fff;&#125;</span></span><br><span class="line"></span><br><span class="line">.calc .td_orange &#123; background-color: <span class="comment">#FA6F14; &#125;</span></span><br><span class="line">.calc .td_content_calc&#123;</span><br><span class="line">    font-weight:normal;border-bottom:1px solid <span class="comment">#fff;</span></span><br><span class="line">    height: 44px; color: white; text-align: center; font-size: 20px; padding:0!important;</span><br><span class="line">&#125;</span><br><span class="line">.calc .td_content_calc:empty:before&#123; content: attr(placeholder); color:<span class="comment">#8c8888; font-size:14px; &#125;</span></span><br><span class="line">.calc .td_content_calc:focus:before&#123; content:none; &#125;</span><br><span class="line">.calc td.active,.calc td:active&#123;background: blue;color:red;font-weight:bold;&#125;</span><br><span class="line">.bsbio&#123;background:<span class="comment">#555;font-size:13px;font-weight:normal;height:30px;color:#eee;&#125;</span></span><br></pre></td></tr></table></figure>
+                </div>
+            </div>
+
+<h1 id="模板：calculator-component-html"><a href="#模板：calculator-component-html" class="headerlink" title="模板：calculator.component.html"></a>模板：calculator.component.html</h1><div class="fold_hider-w">
+                <div class="fold_hider">
+                    <div class="hider_title">
+                        <span class="hider_title_zd">代码折叠</span>
+                        <span class="hider_title_zk">代码展开</span>
+                    </div>
+                </div>
+                <div class="fold">
+                <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class=<span class="string">&quot;calc&quot;</span> tabindex=<span class="string">&quot;-1&quot;</span> [hidden]=<span class="string">&quot;!calcShow&quot;</span>&gt;</span><br><span class="line">    &lt;span class=<span class="string">&quot;chacha&quot;</span> (click)=<span class="string">&quot;evClose(false)&quot;</span>&gt;×&lt;/span&gt;</span><br><span class="line">    &lt;table align=<span class="string">&quot;center&quot;</span> (click)=<span class="string">&quot;clickCalc(<span class="variable">$event</span>)&quot;</span> &gt;</span><br><span class="line">        &lt;tr&gt;</span><br><span class="line">            &lt;th class=<span class="string">&quot;td_orange td_content_calc&quot;</span> colspan=<span class="string">&quot;5&quot;</span> placeholder=<span class="string">&quot;支持键盘操作&quot;</span> contenteditable=<span class="string">&quot;true&quot;</span>&gt;&#123;&#123;calcStatus&#125;&#125;&lt;/th&gt;</span><br><span class="line">        &lt;/tr&gt;</span><br><span class="line">        &lt;tr&gt;</span><br><span class="line">            &lt;td [class.active]=<span class="string">&quot;viewActObj.if7&quot;</span> data-s=<span class="string">&quot;7&quot;</span>&gt;7&lt;/td&gt;</span><br><span class="line">            &lt;td [class.active]=<span class="string">&quot;viewActObj.if8&quot;</span> data-s=<span class="string">&quot;8&quot;</span>&gt;8&lt;/td&gt;</span><br><span class="line">            &lt;td [class.active]=<span class="string">&quot;viewActObj.if9&quot;</span> data-s=<span class="string">&quot;9&quot;</span>&gt;9&lt;/td&gt;</span><br><span class="line">            &lt;td [class.active]=<span class="string">&quot;viewActObj.ifA&quot;</span> data-s=<span class="string">&quot;+&quot;</span>&gt;+&lt;/td&gt;</span><br><span class="line">            &lt;td [class.active]=<span class="string">&quot;viewActObj.ifB&quot;</span> data-s=<span class="string">&quot;-&quot;</span>&gt;-&lt;/td&gt;</span><br><span class="line">        &lt;/tr&gt;</span><br><span class="line">        &lt;tr&gt;</span><br><span class="line">            &lt;td [class.active]=<span class="string">&quot;viewActObj.if4&quot;</span> data-s=<span class="string">&quot;4&quot;</span>&gt;4&lt;/td&gt;</span><br><span class="line">            &lt;td [class.active]=<span class="string">&quot;viewActObj.if5&quot;</span> data-s=<span class="string">&quot;5&quot;</span>&gt;5&lt;/td&gt;</span><br><span class="line">            &lt;td [class.active]=<span class="string">&quot;viewActObj.if6&quot;</span> data-s=<span class="string">&quot;6&quot;</span>&gt;6&lt;/td&gt;</span><br><span class="line">            &lt;td [class.active]=<span class="string">&quot;viewActObj.ifC&quot;</span> data-s=<span class="string">&quot;*&quot;</span>&gt;×&lt;/td&gt;</span><br><span class="line">            &lt;td [class.active]=<span class="string">&quot;viewActObj.ifD&quot;</span> data-s=<span class="string">&quot;/&quot;</span>&gt;÷&lt;/td&gt;</span><br><span class="line">        &lt;/tr&gt;</span><br><span class="line">        &lt;tr&gt;</span><br><span class="line">            &lt;td [class.active]=<span class="string">&quot;viewActObj.if1&quot;</span> data-s=<span class="string">&quot;1&quot;</span>&gt;1&lt;/td&gt;</span><br><span class="line">            &lt;td [class.active]=<span class="string">&quot;viewActObj.if2&quot;</span> data-s=<span class="string">&quot;2&quot;</span>&gt;2&lt;/td&gt;</span><br><span class="line">            &lt;td [class.active]=<span class="string">&quot;viewActObj.if3&quot;</span> data-s=<span class="string">&quot;3&quot;</span>&gt;3&lt;/td&gt;</span><br><span class="line">            &lt;td [class.active]=<span class="string">&quot;viewActObj.ifE&quot;</span> data-s=<span class="string">&quot;(&quot;</span>&gt;(&lt;/td&gt;</span><br><span class="line">            &lt;td [class.active]=<span class="string">&quot;viewActObj.ifF&quot;</span> data-s=<span class="string">&quot;)&quot;</span>&gt;)&lt;/td&gt;</span><br><span class="line">        &lt;/tr&gt;</span><br><span class="line">        &lt;tr&gt;</span><br><span class="line">            &lt;td [class.active]=<span class="string">&quot;viewActObj.if0&quot;</span> data-s=<span class="string">&quot;0&quot;</span>&gt;0&lt;/td&gt;</span><br><span class="line">            &lt;td [class.active]=<span class="string">&quot;viewActObj.ifG&quot;</span> data-s=<span class="string">&quot;.&quot;</span>&gt;.&lt;/td&gt;</span><br><span class="line">            &lt;td [class.active]=<span class="string">&quot;viewActObj.ifH&quot;</span> data-s=<span class="string">&quot;Backspace&quot;</span>&gt;←&lt;/td&gt;</span><br><span class="line">            &lt;td [class.active]=<span class="string">&quot;viewActObj.ifI&quot;</span> data-s=<span class="string">&quot;Delete&quot;</span> class=<span class="string">&quot;td_orange&quot;</span>&gt;dels&lt;/td&gt;</span><br><span class="line">            &lt;td [class.active]=<span class="string">&quot;viewActObj.ifJ&quot;</span> data-s=<span class="string">&quot;Enter&quot;</span> class=<span class="string">&quot;td_orange&quot;</span>&gt;=&lt;/td&gt;</span><br><span class="line">        &lt;/tr&gt;</span><br><span class="line">        &lt;tr&gt;</span><br><span class="line">            &lt;th class=<span class="string">&quot;bsbio&quot;</span> colspan=<span class="string">&quot;5&quot;</span>&gt;&#123;&#123;calcInfo&#125;&#125;&lt;/th&gt;</span><br><span class="line">        &lt;/tr&gt;</span><br><span class="line">    &lt;/table&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+                </div>
+            </div>
+
+<h1 id="TS：calculator-component-ts"><a href="#TS：calculator-component-ts" class="headerlink" title="TS：calculator.component.ts"></a>TS：calculator.component.ts</h1><div class="fold_hider-w">
+                <div class="fold_hider">
+                    <div class="hider_title">
+                        <span class="hider_title_zd">代码折叠</span>
+                        <span class="hider_title_zk">代码展开</span>
+                    </div>
+                </div>
+                <div class="fold">
+                <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br></pre></td><td class="code"><pre><span class="line">import &#123; Component, OnInit, HostListener, Input, Output, EventEmitter &#125; from <span class="string">&#x27;@angular/core&#x27;</span>;</span><br><span class="line">import &#123; Calc &#125; from <span class="string">&#x27;./calc&#x27;</span>;</span><br><span class="line"></span><br><span class="line">@Component(&#123;</span><br><span class="line">    selector: <span class="string">&#x27;app-calculator&#x27;</span>,</span><br><span class="line">    templateUrl: <span class="string">&#x27;./calculator.component.html&#x27;</span>,</span><br><span class="line">    styleUrls: [<span class="string">&#x27;./calculator.component.css&#x27;</span>]</span><br><span class="line">&#125;)</span><br><span class="line"><span class="built_in">export</span> class CalculatorComponent implements OnInit &#123;</span><br><span class="line"></span><br><span class="line">    // tslint:disable-next-line:no-input-rename</span><br><span class="line">    @Input(<span class="string">&#x27;show&#x27;</span>) calcShow = <span class="literal">false</span>;</span><br><span class="line">    // tslint:disable-next-line:no-output-on-prefix</span><br><span class="line">    @Output() onClose: EventEmitter&lt;boolean&gt; = new EventEmitter();</span><br><span class="line">    calcStatus = <span class="string">&#x27;&#x27;</span>;</span><br><span class="line">    calcInfo = <span class="string">&#x27;&#x27;</span>;</span><br><span class="line">    timer: any;</span><br><span class="line">    calcc: Calc;</span><br><span class="line">    viewActObj = &#123; if7: <span class="literal">false</span>, if8: <span class="literal">false</span>, if9: <span class="literal">false</span>, ifA: <span class="literal">false</span>, ifB: <span class="literal">false</span>, if4: <span class="literal">false</span>, if5: <span class="literal">false</span>, if6: <span class="literal">false</span>, ifC: <span class="literal">false</span>, ifD: <span class="literal">false</span>, if1: <span class="literal">false</span>, if2: <span class="literal">false</span>, if3: <span class="literal">false</span>, ifE: <span class="literal">false</span>, ifF: <span class="literal">false</span>, if0: <span class="literal">false</span>, ifG: <span class="literal">false</span>, ifH: <span class="literal">false</span>, ifI: <span class="literal">false</span>, ifJ: <span class="literal">false</span> &#125;;</span><br><span class="line">    keysMap = &#123;</span><br><span class="line">        1: <span class="string">&#x27;1&#x27;</span>, 2: <span class="string">&#x27;2&#x27;</span>, 3: <span class="string">&#x27;3&#x27;</span>, 4: <span class="string">&#x27;4&#x27;</span>, 5: <span class="string">&#x27;5&#x27;</span>, 6: <span class="string">&#x27;6&#x27;</span>, 7: <span class="string">&#x27;7&#x27;</span>, 8: <span class="string">&#x27;8&#x27;</span>, 9: <span class="string">&#x27;9&#x27;</span>, 0: <span class="string">&#x27;0&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;+&#x27;</span>: <span class="string">&#x27;A&#x27;</span>, <span class="string">&#x27;-&#x27;</span>: <span class="string">&#x27;B&#x27;</span>, <span class="string">&#x27;*&#x27;</span>: <span class="string">&#x27;C&#x27;</span>, <span class="string">&#x27;/&#x27;</span>: <span class="string">&#x27;D&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;(&#x27;</span>: <span class="string">&#x27;E&#x27;</span>, <span class="string">&#x27;)&#x27;</span>: <span class="string">&#x27;F&#x27;</span>, <span class="string">&#x27;.&#x27;</span>: <span class="string">&#x27;G&#x27;</span>, Backspace: <span class="string">&#x27;H&#x27;</span>, Delete: <span class="string">&#x27;I&#x27;</span>, <span class="string">&#x27;=&#x27;</span>: <span class="string">&#x27;J&#x27;</span>, Enter: <span class="string">&#x27;J&#x27;</span></span><br><span class="line">    &#125;;</span><br><span class="line">    keys = [<span class="string">&#x27;1&#x27;</span>, <span class="string">&#x27;2&#x27;</span>, <span class="string">&#x27;3&#x27;</span>, <span class="string">&#x27;4&#x27;</span>, <span class="string">&#x27;5&#x27;</span>, <span class="string">&#x27;6&#x27;</span>, <span class="string">&#x27;7&#x27;</span>, <span class="string">&#x27;8&#x27;</span>, <span class="string">&#x27;9&#x27;</span>, <span class="string">&#x27;0&#x27;</span>, <span class="string">&#x27;(&#x27;</span>, <span class="string">&#x27;)&#x27;</span>, <span class="string">&#x27;+&#x27;</span>, <span class="string">&#x27;-&#x27;</span>, <span class="string">&#x27;*&#x27;</span>, <span class="string">&#x27;/&#x27;</span>, <span class="string">&#x27;.&#x27;</span>];</span><br><span class="line">    keysAll = [<span class="string">&#x27;1&#x27;</span>, <span class="string">&#x27;2&#x27;</span>, <span class="string">&#x27;3&#x27;</span>, <span class="string">&#x27;4&#x27;</span>, <span class="string">&#x27;5&#x27;</span>, <span class="string">&#x27;6&#x27;</span>, <span class="string">&#x27;7&#x27;</span>, <span class="string">&#x27;8&#x27;</span>, <span class="string">&#x27;9&#x27;</span>, <span class="string">&#x27;0&#x27;</span>, <span class="string">&#x27;(&#x27;</span>, <span class="string">&#x27;)&#x27;</span>, <span class="string">&#x27;+&#x27;</span>, <span class="string">&#x27;-&#x27;</span>, <span class="string">&#x27;*&#x27;</span>, <span class="string">&#x27;/&#x27;</span>, <span class="string">&#x27;.&#x27;</span>, <span class="string">&#x27;Backspace&#x27;</span>, <span class="string">&#x27;Delete&#x27;</span>, <span class="string">&#x27;Enter&#x27;</span>];</span><br><span class="line">    <span class="function"><span class="title">constructor</span></span>() &#123;</span><br><span class="line">        this.calcc = new Calc();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="title">ngOnInit</span></span>() &#123; &#125;</span><br><span class="line"></span><br><span class="line">    @HostListener(<span class="string">&#x27;document:keyup&#x27;</span>, [<span class="string">&#x27;$event&#x27;</span>])</span><br><span class="line">    writeInput(event: KeyboardEvent): void &#123;</span><br><span class="line">        <span class="keyword">if</span> (event.key === <span class="string">&#x27;J&#x27;</span> &amp;&amp; event.shiftKey) &#123;</span><br><span class="line">            this.evClose(this.calcShow = !this.calcShow);</span><br><span class="line">            <span class="built_in">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (!this.calcShow) &#123; <span class="built_in">return</span>; &#125;</span><br><span class="line">        <span class="keyword">if</span> (this.keysAll.find((v: string) =&gt; v === event.key)) &#123;</span><br><span class="line">            this.calcViewAct(event.key);</span><br><span class="line">            this.goCalc(event.key);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    goCalc(eventName: string) &#123;</span><br><span class="line">        <span class="keyword">if</span> (this.keys.find((v: string) =&gt; v === eventName)) &#123;</span><br><span class="line">            <span class="built_in">let</span> wd = eventName;</span><br><span class="line">            <span class="keyword">if</span> (wd === <span class="string">&#x27;*&#x27;</span>) &#123; wd = <span class="string">&#x27;×&#x27;</span>; &#125;</span><br><span class="line">            <span class="keyword">if</span> (wd === <span class="string">&#x27;/&#x27;</span>) &#123; wd = <span class="string">&#x27;÷&#x27;</span>; &#125;</span><br><span class="line">            this.calcStatus += wd;</span><br><span class="line">            <span class="built_in">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        switch (eventName) &#123;</span><br><span class="line">            <span class="keyword">case</span> <span class="string">&#x27;Backspace&#x27;</span>: &#123;</span><br><span class="line">                const len = this.calcStatus.length;</span><br><span class="line">                <span class="keyword">if</span> (len &gt;= 1) &#123; this.calcStatus = this.calcStatus.substring(0, len - 1); &#125;</span><br><span class="line">                <span class="built_in">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">case</span> <span class="string">&#x27;Delete&#x27;</span>: this.calcStatus = <span class="string">&#x27;&#x27;</span>; <span class="built_in">break</span>;</span><br><span class="line">            <span class="keyword">case</span> <span class="string">&#x27;Enter&#x27;</span> : &#123;</span><br><span class="line">                <span class="keyword">if</span> (this.calcStatus === <span class="string">&#x27;&#x27;</span>) &#123; <span class="built_in">return</span>; &#125;</span><br><span class="line">                const pre = this.calcStatus;</span><br><span class="line">                this.calcStatus = <span class="string">&#x27;&#x27;</span> + this.calcc.parse(pre);</span><br><span class="line">                this.calcInfo = pre + <span class="string">&#x27;=&#x27;</span> + this.calcStatus;</span><br><span class="line">                <span class="built_in">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    calcViewAct(str: string) &#123;</span><br><span class="line">        clearTimeout(this.timer);</span><br><span class="line">        <span class="keyword">for</span> (const item of Object.keys(this.viewActObj)) &#123;</span><br><span class="line">            this.viewActObj[item] = <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        const key = `<span class="keyword">if</span><span class="variable">$&#123;this.keysMap[str]&#125;</span>`;</span><br><span class="line">        this.viewActObj[key] = <span class="literal">true</span>;</span><br><span class="line">        this.timer = setTimeout(() =&gt; this.viewActObj[key] = <span class="literal">false</span>, 80);</span><br><span class="line">    &#125;</span><br><span class="line">    clickCalc(event: any) &#123;</span><br><span class="line">        <span class="keyword">if</span> (event.target.tagName.toLowerCase() === <span class="string">&#x27;td&#x27;</span>) &#123;</span><br><span class="line">            const str = event.target.getAttribute(<span class="string">&#x27;data-s&#x27;</span>);</span><br><span class="line">            this.goCalc(str);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    evClose(blean: boolean) &#123;</span><br><span class="line">        this.onClose.emit(this.calcShow = blean);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+                </div>
+            </div>
+
+<h1 id="TS：calc-ts"><a href="#TS：calc-ts" class="headerlink" title="TS：calc.ts"></a>TS：calc.ts</h1><div class="fold_hider-w">
+                <div class="fold_hider">
+                    <div class="hider_title">
+                        <span class="hider_title_zd">代码折叠</span>
+                        <span class="hider_title_zk">代码展开</span>
+                    </div>
+                </div>
+                <div class="fold">
+                <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> class Calc &#123;</span><br><span class="line">    parse(content: string) &#123;</span><br><span class="line">        <span class="built_in">let</span> index = content.lastIndexOf(<span class="string">&#x27;(&#x27;</span>);</span><br><span class="line">        <span class="keyword">if</span> (index &gt; -1) &#123;</span><br><span class="line">            const endIndex = content.indexOf(<span class="string">&#x27;)&#x27;</span>, index);</span><br><span class="line">            <span class="keyword">if</span> (endIndex &gt; -1) &#123;</span><br><span class="line">                const result = this.parse(content.substring(index + 1, endIndex));</span><br><span class="line">                <span class="built_in">return</span> this.parse(content.substring(0, index) + (<span class="string">&#x27;&#x27;</span> + result) + content.substring(endIndex + 1));</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">let</span> x: string | number;</span><br><span class="line">        <span class="built_in">let</span> y: string | number;</span><br><span class="line">        index = content.indexOf(<span class="string">&#x27;+&#x27;</span>);</span><br><span class="line">        <span class="keyword">if</span> (index &gt; -1) &#123;</span><br><span class="line">            x = content.substring(0, index);</span><br><span class="line">            y = content.substring(index + 1);</span><br><span class="line">            <span class="keyword">if</span> (typeof x !== <span class="string">&#x27;number&#x27;</span>) &#123; x = this.parse(x); &#125;</span><br><span class="line">            <span class="keyword">if</span> (typeof y !== <span class="string">&#x27;number&#x27;</span>) &#123; y = this.parse(y); &#125;</span><br><span class="line">            <span class="built_in">return</span> this.floatAdd(x as number, y as number);</span><br><span class="line">        &#125;</span><br><span class="line">        index = content.lastIndexOf(<span class="string">&#x27;-&#x27;</span>);</span><br><span class="line">        <span class="keyword">if</span> (index &gt; -1) &#123;</span><br><span class="line">            x = content.substring(0, index);</span><br><span class="line">            y = content.substring(index + 1);</span><br><span class="line">            <span class="keyword">if</span> (typeof x !== <span class="string">&#x27;number&#x27;</span>) &#123; x = this.parse(x); &#125;</span><br><span class="line">            <span class="keyword">if</span> (typeof y !== <span class="string">&#x27;number&#x27;</span>) &#123; y = this.parse(y); &#125;</span><br><span class="line">            <span class="built_in">return</span> this.floatSub(x as number, y as number);</span><br><span class="line">        &#125;</span><br><span class="line">        index = content.lastIndexOf(<span class="string">&#x27;×&#x27;</span>);</span><br><span class="line">        <span class="keyword">if</span> (index &gt; -1) &#123;</span><br><span class="line">            x = content.substring(0, index);</span><br><span class="line">            y = content.substring(index + 1);</span><br><span class="line">            <span class="keyword">if</span> (typeof x !== <span class="string">&#x27;number&#x27;</span>) &#123; x = this.parse(x); &#125;</span><br><span class="line">            <span class="keyword">if</span> (typeof y !== <span class="string">&#x27;number&#x27;</span>) &#123; y = this.parse(y); &#125;</span><br><span class="line">            <span class="built_in">return</span> this.floatMul(x as number, y as number);</span><br><span class="line">        &#125;</span><br><span class="line">        index = content.lastIndexOf(<span class="string">&#x27;÷&#x27;</span>);</span><br><span class="line">        <span class="keyword">if</span> (index &gt; -1) &#123;</span><br><span class="line">            x = content.substring(0, index);</span><br><span class="line">            y = content.substring(index + 1);</span><br><span class="line">            <span class="keyword">if</span> (typeof x !== <span class="string">&#x27;number&#x27;</span>) &#123; x = this.parse(x); &#125;</span><br><span class="line">            <span class="keyword">if</span> (typeof y !== <span class="string">&#x27;number&#x27;</span>) &#123; y = this.parse(y); &#125;</span><br><span class="line">            <span class="built_in">return</span> this.floatDiv(x as number, y as number);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (<span class="string">&#x27;&#x27;</span> === content) &#123;</span><br><span class="line">            <span class="built_in">return</span> 0;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="built_in">return</span> Number(content);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    floatAdd(arg1: number, arg2: number) &#123;</span><br><span class="line">        <span class="built_in">let</span> r1: number;</span><br><span class="line">        <span class="built_in">let</span> r2: number;</span><br><span class="line">        try &#123;</span><br><span class="line">            r1 = arg1.toString().split(<span class="string">&#x27;.&#x27;</span>)[1].length;</span><br><span class="line">        &#125; catch (e) &#123;</span><br><span class="line">            r1 = 0;</span><br><span class="line">        &#125;</span><br><span class="line">        try &#123;</span><br><span class="line">            r2 = arg2.toString().split(<span class="string">&#x27;.&#x27;</span>)[1].length;</span><br><span class="line">        &#125; catch (e) &#123;</span><br><span class="line">            r2 = 0;</span><br><span class="line">        &#125;</span><br><span class="line">        const m = Math.pow(10, Math.max(r1, r2));</span><br><span class="line">        <span class="built_in">return</span> (arg1 * m + arg2 * m) / m;</span><br><span class="line">    &#125;</span><br><span class="line">    floatSub(arg1: number, arg2: number) &#123;</span><br><span class="line">        <span class="built_in">let</span> r1: number;</span><br><span class="line">        <span class="built_in">let</span> r2: number;</span><br><span class="line">        try &#123;</span><br><span class="line">            r1 = arg1.toString().split(<span class="string">&#x27;.&#x27;</span>)[1].length;</span><br><span class="line">        &#125; catch (e) &#123;</span><br><span class="line">            r1 = 0;</span><br><span class="line">        &#125;</span><br><span class="line">        try &#123;</span><br><span class="line">            r2 = arg2.toString().split(<span class="string">&#x27;.&#x27;</span>)[1].length;</span><br><span class="line">        &#125; catch (e) &#123;</span><br><span class="line">            r2 = 0;</span><br><span class="line">        &#125;</span><br><span class="line">        const m = Math.pow(10, Math.max(r1, r2));</span><br><span class="line">        const n = (r1 &gt;= r2) ? r1 : r2;</span><br><span class="line">        <span class="built_in">return</span> ((arg1 * m - arg2 * m) / m).toFixed(n);</span><br><span class="line">    &#125;</span><br><span class="line">    floatMul(arg1: number, arg2: number) &#123;</span><br><span class="line">        <span class="built_in">let</span> m = 0;</span><br><span class="line">        const s1 = arg1.toString();</span><br><span class="line">        const s2 = arg2.toString();</span><br><span class="line">        try &#123;</span><br><span class="line">            m += s1.split(<span class="string">&#x27;.&#x27;</span>)[1].length;</span><br><span class="line">        &#125; catch (e) &#123; &#125;</span><br><span class="line">        try &#123;</span><br><span class="line">            m += s2.split(<span class="string">&#x27;.&#x27;</span>)[1].length;</span><br><span class="line">        &#125; catch (e) &#123; &#125;</span><br><span class="line">        <span class="built_in">return</span> Number(s1.replace(<span class="string">&#x27;.&#x27;</span>, <span class="string">&#x27;&#x27;</span>)) * Number(s2.replace(<span class="string">&#x27;.&#x27;</span>, <span class="string">&#x27;&#x27;</span>)) / Math.pow(10, m)</span><br><span class="line">    &#125;</span><br><span class="line">    floatDiv(arg1: number, arg2: number) &#123;</span><br><span class="line">        <span class="built_in">let</span> t1 = 0;</span><br><span class="line">        <span class="built_in">let</span> t2 = 0;</span><br><span class="line">        try &#123;</span><br><span class="line">            t1 = arg1.toString().split(<span class="string">&#x27;.&#x27;</span>)[1].length;</span><br><span class="line">        &#125; catch (e) &#123; &#125;</span><br><span class="line">        try &#123;</span><br><span class="line">            t2 = arg2.toString().split(<span class="string">&#x27;.&#x27;</span>)[1].length;</span><br><span class="line">        &#125; catch (e) &#123; &#125;</span><br><span class="line">        const r1 = Number(arg1.toString().replace(<span class="string">&#x27;.&#x27;</span>, <span class="string">&#x27;&#x27;</span>));</span><br><span class="line">        const r2 = Number(arg2.toString().replace(<span class="string">&#x27;.&#x27;</span>, <span class="string">&#x27;&#x27;</span>));</span><br><span class="line">        const v = (r1 / r2) * Math.pow(10, t2 - t1);</span><br><span class="line">        <span class="built_in">return</span> Number(v.toFixed(4));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+                </div>
+            </div>
+
+<h1 id="使用："><a href="#使用：" class="headerlink" title="使用："></a>使用：</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;app-calculator [show]=<span class="string">&quot;calcShow&quot;</span> (onClose)=<span class="string">&quot;onCalcClose(<span class="variable">$event</span>)&quot;</span>&gt;&lt;/app-calculator&gt;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">calcShow: boolean = <span class="literal">true</span>;</span><br><span class="line">onCalcClose(show: boolean) &#123; this.calcShow = show; &#125;</span><br></pre></td></tr></table></figure>
+            </div>
+        
+        <footer class="article-footer">
+        </footer>
+    </div>
+</article>
+
+
+    
+<nav id="article-nav">
+    
+    
+        <a href="/blog/2019/04/11/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6-angular-2019-04-11-ng%E5%AE%9E%E7%8E%B0%E5%88%86%E9%A1%B5%E7%BB%84%E4%BB%B6/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">下一篇</strong>
+            <div class="article-nav-title">ng实现分页组件</div>
+        </a>
+    
+</nav>
+
+
+
+
+
+    
+    
+
+
+
+
+<!-- baidu url auto push script -->
+<script type="text/javascript">
+    !function(){var e=/([http|https]:\/\/[a-zA-Z0-9\_\.]+\.baidu\.com)/gi,r=window.location.href,o=document.referrer;if(!e.test(r)){var n="//api.share.baidu.com/s.gif";o?(n+="?r="+encodeURIComponent(document.referrer),r&&(n+="&l="+r)):r&&(n+="?l="+r);var t=new Image;t.src=n}}(window);
+</script>
+</section>
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            zuitaibai &copy; 2021 
+            <a rel="external nofollow noopener noreferrer" target="_blank" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/80x15.png"></a>
+            <br> Powered by <a href="http://hexo.io/" target="_blank" rel="external nofollow noopener noreferrer">Hexo</a>. Theme - <a target="_blank" rel="external nofollow noopener noreferrer" href="https://github.com/zthxxx/hexo-theme-Wikitten">wikitten</a>
+            
+        </div>
+    </div>
+</footer>
+
+        
+
+    
+        
+<script src="/blog/libs/lightgallery/js/lightgallery.min.js"></script>
+
+        
+<script src="/blog/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+
+        
+<script src="/blog/libs/lightgallery/js/lg-pager.min.js"></script>
+
+        
+<script src="/blog/libs/lightgallery/js/lg-autoplay.min.js"></script>
+
+        
+<script src="/blog/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+
+        
+<script src="/blog/libs/lightgallery/js/lg-zoom.min.js"></script>
+
+        
+<script src="/blog/libs/lightgallery/js/lg-hash.min.js"></script>
+
+        
+<script src="/blog/libs/lightgallery/js/lg-share.min.js"></script>
+
+        
+<script src="/blog/libs/lightgallery/js/lg-video.min.js"></script>
+
+    
+    
+        
+<script src="/blog/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+
+    
+    
+        <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true,
+            TeX: {
+                equationNumbers: {
+                  autoNumber: 'AMS'
+                }
+            }
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script async src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+
+
+
+<!-- Custom Scripts -->
+
+<script src="/blog/js/main.js"></script>
+
+
+    </div>
+</body>
+</html>

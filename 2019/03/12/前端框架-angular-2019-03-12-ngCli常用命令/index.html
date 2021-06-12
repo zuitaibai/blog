@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    
+    <title>ng-cli常用命令 | …酉</title>
+    
+    
+        <meta name="keywords" content="ng,angular-cli,命令">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="ng-cli 命令(@Angular CLI 终极指南:https:&#x2F;&#x2F;segmentfault.com&#x2F;a&#x2F;1190000009771946)">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ng-cli常用命令">
+<meta property="og:url" content="https://zuitaibai.github.io/blog/2019/03/12/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6-angular-2019-03-12-ngCli%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/index.html">
+<meta property="og:site_name" content="…酉">
+<meta property="og:description" content="ng-cli 命令(@Angular CLI 终极指南:https:&#x2F;&#x2F;segmentfault.com&#x2F;a&#x2F;1190000009771946)">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2019-03-12T03:25:07.000Z">
+<meta property="article:modified_time" content="2019-03-12T03:25:07.000Z">
+<meta property="article:author" content="zuitaibai">
+<meta property="article:tag" content="ng">
+<meta property="article:tag" content="angular-cli">
+<meta property="article:tag" content="命令">
+<meta name="twitter:card" content="summary">
+    
+
+    
+        <link rel="alternate" href="/atom.xml" title="…酉" type="application/atom+xml">
+    
+
+    
+        <link rel="icon" href="/blog/blog/favicon.ico">
+    
+
+    
+<link rel="stylesheet" href="/blog/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/blog/libs/open-sans/styles.css">
+
+    
+<link rel="stylesheet" href="/blog/libs/source-code-pro/styles.css">
+
+
+    
+<link rel="stylesheet" href="/blog/css/style.css">
+
+    
+<script src="/blog/libs/jquery/2.1.3/jquery.min.js"></script>
+
+    
+<script src="/blog/libs/jquery/plugins/cookie/1.4.1/jquery.cookie.js"></script>
+
+    
+    
+        
+<link rel="stylesheet" href="/blog/libs/lightgallery/css/lightgallery.min.css">
+
+    
+    
+        
+<link rel="stylesheet" href="/blog/libs/justified-gallery/justifiedGallery.min.css">
+
+    
+    
+    
+    
+
+
+    
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/blog/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">…酉</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/blog/">首页</a>
+                
+                    <a class="main-nav-link" href="/blog/archives">归档</a>
+                
+                    <a class="main-nav-link" href="/blog/categories">分类</a>
+                
+                    <a class="main-nav-link" href="/blog/tags">标签</a>
+                
+                    <a class="main-nav-link" href="/blog/about">关于</a>
+                
+            </nav>
+            
+            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索">
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="想要查找什么...">
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/blog/',
+        CONTENT_URL: '/blog/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/blog/js/insight.js"></script>
+
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/blog/">首页</a></td>
+                
+                    <td><a class="main-nav-link" href="/blog/archives">归档</a></td>
+                
+                    <td><a class="main-nav-link" href="/blog/categories">分类</a></td>
+                
+                    <td><a class="main-nav-link" href="/blog/tags">标签</a></td>
+                
+                    <td><a class="main-nav-link" href="/blog/about">关于</a></td>
+                
+                <td>
+                    
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索">
+    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+            
+                <aside id="sidebar">
+   
+        
+    <div class="widget-wrap" id="categories">
+        <h3 class="widget-title">
+            <span>分类</span>
+            &nbsp;
+            <a id="allExpand" href="#">
+                <i class="fa fa-angle-double-down fa-2x"></i>
+            </a>
+        </h3>
+
+        
+        
+         <ul class="unstyled" id="tree"> 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            Css
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/blog/2016/05/25/Css-2016-05-25-css%E6%8E%A7%E5%88%B6%E9%9D%9Eli%E7%9A%84%E9%A1%B9%E7%9B%AE%E7%AC%A6%E5%8F%B7/">css控制非li的项目符号</a></li>  </ul> 
+                    </li>
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            Ecmascript
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/blog/2015/12/14/Ecmascript-2015-12-14-%E5%86%99%E4%BA%86%E4%B8%AA%E5%B8%A6%E5%89%8D%E5%90%8E%E7%9C%81%E7%95%A5%E5%8F%B7%E7%9A%84js%E5%88%86%E9%A1%B5/">写了个带前后省略号的js分页</a></li>  <li class="file"><a href="/blog/2016/05/27/Ecmascript-2016-05-27-javascript%E5%8A%A8%E7%94%BB%E5%AE%9E%E7%8E%B0%EF%BC%88%E8%BD%AC%EF%BC%89/">javascript动画实现（转）</a></li>  </ul> 
+                    </li>
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            Html
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/blog/2016/05/26/Html-%E4%B8%80%E5%83%8F%E7%B4%A0%E8%BE%B9%E6%A1%86%E8%A1%A8%E6%A0%BC%E7%9A%84%E5%87%A0%E7%A7%8D%E5%AE%9E%E7%8E%B0%E6%96%B9%E6%B3%95/">一像素边框表格的几种实现方法</a></li>  <li class="file"><a href="/blog/2016/06/12/Html-2016-06-12-%E7%89%B9%E6%AE%8A%E7%AC%A6%E5%8F%B7/">特殊符号</a></li>  </ul> 
+                    </li>
+                    
+                    <li class="directory open">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder-open"></i>
+                            &nbsp;
+                            前端框架
+                        </a>
+                         <ul class="unstyled" id="tree"> 
+                    <li class="directory open">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder-open"></i>
+                            &nbsp;
+                            angular
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file active"><a href="/blog/2019/03/12/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6-angular-2019-03-12-ngCli%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">ng-cli常用命令</a></li>  <li class="file"><a href="/blog/2019/04/11/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6-angular-2019-04-11-ng%E5%AE%9E%E7%8E%B0RadioGroup-CheckboxGroup%E7%BB%84%E4%BB%B6/">ng实现RadioGroup/CheckboxGroup组件</a></li>  <li class="file"><a href="/blog/2019/04/11/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6-angular-2019-04-11-ng%E5%AE%9E%E7%8E%B0%E5%88%86%E9%A1%B5%E7%BB%84%E4%BB%B6/">ng实现分页组件</a></li>  <li class="file"><a href="/blog/2019/04/11/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6-angular-2019-4-11-ng%E5%AE%9E%E7%8E%B0%E8%AE%A1%E7%AE%97%E5%99%A8-%E7%BB%91%E5%AE%9A%E9%94%AE%E7%9B%98/">ng实现计算器-绑定键盘</a></li>  </ul> 
+                    </li>
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            react
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/blog/2017/03/02/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6-react-2017-03-02-react-router-%E6%8C%89%E9%9C%80%E5%8A%A0%E8%BD%BD/">react-router 按需加载（转）</a></li>  </ul> 
+                    </li>
+                     </ul> 
+                    </li>
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            常用工具和插件
+                        </a>
+                         <ul class="unstyled" id="tree"> 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            IDE
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/blog/2017/02/03/%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7%E5%92%8C%E6%8F%92%E4%BB%B6-IDE-2017-02-03-Vim%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91%E5%91%BD%E4%BB%A4/">Vim文本编辑命令</a></li>  </ul> 
+                    </li>
+                     </ul> 
+                    </li>
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            开发流程
+                        </a>
+                         <ul class="unstyled" id="tree"> 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            git
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/blog/2017/02/03/%E5%BC%80%E5%8F%91%E6%B5%81%E7%A8%8B-git-2017-02-03-git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">git常用命令</a></li>  </ul> 
+                    </li>
+                     </ul> 
+                    </li>
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            服务端
+                        </a>
+                         <ul class="unstyled" id="tree"> 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            nginx
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/blog/2017/03/29/%E6%9C%8D%E5%8A%A1%E7%AB%AF-nginx-2017-03-29-nginx-conf/">nginx.conf</a></li>  </ul> 
+                    </li>
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            nodejs
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/blog/2016/05/27/%E6%9C%8D%E5%8A%A1%E7%AB%AF-nodejs-2016-05-27-nodejs%E7%AE%80%E6%98%93server%E7%8E%AF%E5%A2%83%E5%8F%8A%E7%AE%80%E6%98%93%E6%8E%A5%E5%8F%A3%E8%B7%AF%E7%94%B1%E5%86%99%E5%9C%A8%E4%B8%80%E8%B5%B7/">nodejs简易server环境及简易接口路由写在一起</a></li>  <li class="file"><a href="/blog/2016/05/27/%E6%9C%8D%E5%8A%A1%E7%AB%AF-nodejs-2016-05-27-nodejs%E7%AE%80%E6%98%93server%E7%8E%AF%E5%A2%83%E5%8F%8A%E7%AE%80%E6%98%93%E6%8E%A5%E5%8F%A3%E8%B7%AF%E7%94%B1%E5%86%99%E5%9C%A8%E4%B8%80%E8%B5%B7%EF%BC%88%E4%BA%8C%EF%BC%89/">nodejs简易server环境及简易接口路由写在一起（二）</a></li>  <li class="file"><a href="/blog/2017/02/03/%E6%9C%8D%E5%8A%A1%E7%AB%AF-nodejs-2017-02-03-npm%E5%91%BD%E4%BB%A4/">npm命令</a></li>  <li class="file"><a href="/blog/2018/04/21/%E6%9C%8D%E5%8A%A1%E7%AB%AF-nodejs-2018-04-21-%E7%AE%80%E6%98%93nodeserver%EF%BC%8C%E5%90%ABmock/">简易nodeserver，含mock</a></li>  </ul> 
+                    </li>
+                     </ul> 
+                    </li>
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            移动端
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/blog/2016/05/27/%E7%A7%BB%E5%8A%A8%E7%AB%AF-2016-05-27-pc%E5%92%8C%E7%A7%BB%E5%8A%A8%E7%AB%AF%E7%9A%84js%E6%8B%96%E6%8B%BD%E7%AE%80%E6%98%93%E5%87%BD%E6%95%B0/">pc和移动端的js拖拽简易函数</a></li>  <li class="file"><a href="/blog/2016/06/13/%E7%A7%BB%E5%8A%A8%E7%AB%AF-2013-06-13-%E6%89%8B%E6%9C%BA%E7%BD%91%E7%AB%99%E7%9A%84%E5%87%A0%E7%82%B9%E6%B3%A8%E6%84%8F%EF%BC%88%E8%BD%AC%EF%BC%89/">手机网站的几点注意（转）</a></li>  </ul> 
+                    </li>
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            网络和通讯
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/blog/2016/06/13/%E7%BD%91%E7%BB%9C%E5%92%8C%E9%80%9A%E8%AE%AF-2016-06-13-HTTP%E7%8A%B6%E6%80%81%E7%A0%81%E8%AF%A6%E8%A7%A3%E5%88%97%E8%A1%A8/">HTTP状态码详解列表</a></li>  </ul> 
+                    </li>
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            计算机基础
+                        </a>
+                         <ul class="unstyled" id="tree"> 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            编码
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/blog/2016/06/12/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E7%BC%96%E7%A0%81-2016-06-12-%E5%AD%97%E7%AC%A6%E9%9B%86%E5%92%8C%E5%AD%97%E7%AC%A6%E7%BC%96%E7%A0%81/">字符集和字符编码</a></li>  <li class="file"><a href="/blog/2016/06/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E7%BC%96%E7%A0%81-2016-06-13-%E5%AD%97%E4%BD%93%E7%9A%84%E4%B8%AD-%E8%8B%B1-Unicode%E5%AF%B9%E7%85%A7%E8%A1%A8/">字体的中-英-Unicode对照表</a></li>  </ul> 
+                    </li>
+                     </ul> 
+                    </li>
+                     </ul> 
+    </div>
+    <script>
+        $(document).ready(function() {
+            var iconFolderOpenClass  = 'fa-folder-open';
+            var iconFolderCloseClass = 'fa-folder';
+            var iconAllExpandClass = 'fa-angle-double-down';
+            var iconAllPackClass = 'fa-angle-double-up';
+            // Handle directory-tree expansion:
+            // 左键单独展开目录
+            $(document).on('click', '#categories a[data-role="directory"]', function (event) {
+                event.preventDefault();
+
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconFolderOpenClass);
+                var subtree = $(this).siblings('ul');
+                icon.removeClass(iconFolderOpenClass).removeClass(iconFolderCloseClass);
+                if (expanded) {
+                    if (typeof subtree != 'undefined') {
+                        subtree.slideUp({ duration: 100 });
+                    }
+                    icon.addClass(iconFolderCloseClass);
+                } else {
+                    if (typeof subtree != 'undefined') {
+                        subtree.slideDown({ duration: 100 });
+                    }
+                    icon.addClass(iconFolderOpenClass);
+                }
+            });
+            // 右键展开下属所有目录
+            $('#categories a[data-role="directory"]').bind("contextmenu", function(event){
+                event.preventDefault();
+
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconFolderOpenClass);
+                var listNode = $(this).siblings('ul');
+                var subtrees = $.merge(listNode.find('li ul'), listNode);
+                var icons = $.merge(listNode.find('.fa'), icon);
+                icons.removeClass(iconFolderOpenClass).removeClass(iconFolderCloseClass);
+                if(expanded) {
+                    subtrees.slideUp({ duration: 100 });
+                    icons.addClass(iconFolderCloseClass);
+                } else {
+                    subtrees.slideDown({ duration: 100 });
+                    icons.addClass(iconFolderOpenClass);
+                }
+            })
+            // 展开关闭所有目录按钮
+            $(document).on('click', '#allExpand', function (event) {
+                event.preventDefault();
+
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconAllExpandClass);
+                icon.removeClass(iconAllExpandClass).removeClass(iconAllPackClass);
+                if(expanded) {
+                    $('#sidebar .fa.fa-folder').removeClass('fa-folder').addClass('fa-folder-open')
+                    $('#categories li ul').slideDown({ duration: 100 });
+                    icon.addClass(iconAllPackClass);
+                } else {
+                    $('#sidebar .fa.fa-folder-open').removeClass('fa-folder-open').addClass('fa-folder')
+                    $('#categories li ul').slideUp({ duration: 100 });
+                    icon.addClass(iconAllExpandClass);
+                }
+            });
+        });
+    </script>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title"><span>标签云</span></h3>
+        <div class="widget tagcloud">
+            <a href="/blog/tags/CheckboxGroup/" style="font-size: 10px;">CheckboxGroup</a> <a href="/blog/tags/HTTP%E7%8A%B6%E6%80%81%E7%A0%81/" style="font-size: 10px;">HTTP状态码</a> <a href="/blog/tags/RadioGroup/" style="font-size: 10px;">RadioGroup</a> <a href="/blog/tags/Unicode/" style="font-size: 10px;">Unicode</a> <a href="/blog/tags/angular/" style="font-size: 15px;">angular</a> <a href="/blog/tags/angular-cli/" style="font-size: 10px;">angular-cli</a> <a href="/blog/tags/calc/" style="font-size: 10px;">calc</a> <a href="/blog/tags/conf/" style="font-size: 10px;">conf</a> <a href="/blog/tags/css%E5%B0%8F%E6%8A%80%E5%B7%A7/" style="font-size: 10px;">css小技巧</a> <a href="/blog/tags/drag/" style="font-size: 10px;">drag</a> <a href="/blog/tags/git/" style="font-size: 10px;">git</a> <a href="/blog/tags/js/" style="font-size: 15px;">js</a> <a href="/blog/tags/ng/" style="font-size: 20px;">ng</a> <a href="/blog/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/blog/tags/nodejs/" style="font-size: 20px;">nodejs</a> <a href="/blog/tags/npm/" style="font-size: 10px;">npm</a> <a href="/blog/tags/paging/" style="font-size: 10px;">paging</a> <a href="/blog/tags/react/" style="font-size: 10px;">react</a> <a href="/blog/tags/react-router/" style="font-size: 10px;">react-router</a> <a href="/blog/tags/router/" style="font-size: 10px;">router</a> <a href="/blog/tags/table/" style="font-size: 10px;">table</a> <a href="/blog/tags/vim/" style="font-size: 10px;">vim</a> <a href="/blog/tags/%E4%B8%80%E5%83%8F%E7%B4%A0/" style="font-size: 10px;">一像素</a> <a href="/blog/tags/%E5%88%86%E9%A1%B5/" style="font-size: 10px;">分页</a> <a href="/blog/tags/%E5%8A%A8%E7%94%BB/" style="font-size: 10px;">动画</a> <a href="/blog/tags/%E5%91%BD%E4%BB%A4/" style="font-size: 20px;">命令</a> <a href="/blog/tags/%E5%AD%97%E4%BD%93/" style="font-size: 10px;">字体</a> <a href="/blog/tags/%E5%AD%97%E7%AC%A6%E7%BC%96%E7%A0%81/" style="font-size: 10px;">字符编码</a> <a href="/blog/tags/%E5%AD%97%E7%AC%A6%E9%9B%86/" style="font-size: 10px;">字符集</a> <a href="/blog/tags/%E6%8B%96%E6%8B%BD/" style="font-size: 10px;">拖拽</a> <a href="/blog/tags/%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6/" style="font-size: 10px;">版本控制</a> <a href="/blog/tags/%E7%89%B9%E6%AE%8A%E7%AC%A6%E5%8F%B7/" style="font-size: 10px;">特殊符号</a> <a href="/blog/tags/%E7%A7%BB%E5%8A%A8%E7%AB%AF/" style="font-size: 10px;">移动端</a> <a href="/blog/tags/%E8%A1%A8%E6%A0%BC/" style="font-size: 10px;">表格</a> <a href="/blog/tags/%E8%B7%AF%E7%94%B1/" style="font-size: 15px;">路由</a> <a href="/blog/tags/%E9%80%9F%E6%9F%A5%E8%A1%A8/" style="font-size: 15px;">速查表</a>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title"><span>最新文章</span></h3>
+        <div class="widget">
+            <ul id="recent-post" class>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/blog/2019/04/11/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6-angular-2019-4-11-ng%E5%AE%9E%E7%8E%B0%E8%AE%A1%E7%AE%97%E5%99%A8-%E7%BB%91%E5%AE%9A%E9%94%AE%E7%9B%98/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/blog/categories/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6/">前端框架</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/blog/categories/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6/angular/">angular</a></p>
+                            <p class="item-title"><a href="/blog/2019/04/11/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6-angular-2019-4-11-ng%E5%AE%9E%E7%8E%B0%E8%AE%A1%E7%AE%97%E5%99%A8-%E7%BB%91%E5%AE%9A%E9%94%AE%E7%9B%98/" class="title">ng实现计算器-绑定键盘</a></p>
+                            <p class="item-date"><time datetime="2019-04-11T02:20:01.000Z" itemprop="datePublished">2019-04-11</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/blog/2019/04/11/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6-angular-2019-04-11-ng%E5%AE%9E%E7%8E%B0%E5%88%86%E9%A1%B5%E7%BB%84%E4%BB%B6/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/blog/categories/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6/">前端框架</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/blog/categories/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6/angular/">angular</a></p>
+                            <p class="item-title"><a href="/blog/2019/04/11/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6-angular-2019-04-11-ng%E5%AE%9E%E7%8E%B0%E5%88%86%E9%A1%B5%E7%BB%84%E4%BB%B6/" class="title">ng实现分页组件</a></p>
+                            <p class="item-date"><time datetime="2019-04-11T02:14:00.000Z" itemprop="datePublished">2019-04-11</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/blog/2019/04/11/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6-angular-2019-04-11-ng%E5%AE%9E%E7%8E%B0RadioGroup-CheckboxGroup%E7%BB%84%E4%BB%B6/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/blog/categories/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6/">前端框架</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/blog/categories/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6/angular/">angular</a></p>
+                            <p class="item-title"><a href="/blog/2019/04/11/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6-angular-2019-04-11-ng%E5%AE%9E%E7%8E%B0RadioGroup-CheckboxGroup%E7%BB%84%E4%BB%B6/" class="title">ng实现RadioGroup/CheckboxGroup组件</a></p>
+                            <p class="item-date"><time datetime="2019-04-11T02:04:54.000Z" itemprop="datePublished">2019-04-11</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/blog/2019/03/12/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6-angular-2019-03-12-ngCli%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/blog/categories/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6/">前端框架</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/blog/categories/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6/angular/">angular</a></p>
+                            <p class="item-title"><a href="/blog/2019/03/12/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6-angular-2019-03-12-ngCli%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" class="title">ng-cli常用命令</a></p>
+                            <p class="item-date"><time datetime="2019-03-12T03:25:07.000Z" itemprop="datePublished">2019-03-12</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/blog/2018/04/21/%E6%9C%8D%E5%8A%A1%E7%AB%AF-nodejs-2018-04-21-%E7%AE%80%E6%98%93nodeserver%EF%BC%8C%E5%90%ABmock/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/blog/categories/%E6%9C%8D%E5%8A%A1%E7%AB%AF/">服务端</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/blog/categories/%E6%9C%8D%E5%8A%A1%E7%AB%AF/nodejs/">nodejs</a></p>
+                            <p class="item-title"><a href="/blog/2018/04/21/%E6%9C%8D%E5%8A%A1%E7%AB%AF-nodejs-2018-04-21-%E7%AE%80%E6%98%93nodeserver%EF%BC%8C%E5%90%ABmock/" class="title">简易nodeserver，含mock</a></p>
+                            <p class="item-date"><time datetime="2018-04-21T08:06:33.000Z" itemprop="datePublished">2018-04-21</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title"><span>归档</span></h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2019/04/">四月 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2019/03/">三月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2018/04/">四月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2017/03/">三月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2017/02/">二月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2016/06/">六月 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2016/05/">五月 2016</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2015/12/">十二月 2015</a><span class="archive-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title"><span>链接</span></h3>
+        <div class="widget">
+            <ul>
+                
+            </ul>
+        </div>
+    </div>
+
+
+    
+    <div id="toTop" class="fa fa-angle-up"></div>
+</aside>
+            
+            <section id="main"><article id="post-前端框架-angular-2019-03-12-ngCli常用命令" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+                    <div class="article-meta">
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/blog/categories/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6/">前端框架</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/blog/categories/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6/angular/">angular</a>
+    </div>
+
+
+                        
+
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/blog/2019/03/12/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6-angular-2019-03-12-ngCli%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">
+            <time datetime="2019-03-12T03:25:07.000Z" itemprop="datePublished">2019-03-12</time>
+        </a>
+    </div>
+
+
+                        
+    
+
+    
+
+
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link-link" href="/blog/tags/angular-cli/" rel="tag">angular-cli</a>, <a class="tag-link-link" href="/blog/tags/ng/" rel="tag">ng</a>, <a class="tag-link-link" href="/blog/tags/%E5%91%BD%E4%BB%A4/" rel="tag">命令</a>
+    </div>
+
+
+
+                        
+                        
+                    </div>
+                
+                
+                
+    
+        <h1 class="article-title article-title-noindex" itemprop="name">
+            ng-cli常用命令
+        </h1>
+    
+
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+        
+            
+                <div id="toc" class="toc-article">
+                <strong class="toc-title">本文大纲</strong>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#ng-cli-%E5%91%BD%E4%BB%A4"><span class="toc-number">1.</span> <span class="toc-text">ng-cli 命令</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8F%82%E6%95%B0"><span class="toc-number">2.</span> <span class="toc-text">参数</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#ng-generate"><span class="toc-number">2.1.</span> <span class="toc-text">ng generate</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-ng-generate-class"><span class="toc-number">2.1.1.</span> <span class="toc-text">1. ng generate class</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-ng-generate-component"><span class="toc-number">2.1.2.</span> <span class="toc-text">2. ng generate component</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-ng-generate-directive"><span class="toc-number">2.1.3.</span> <span class="toc-text">3. ng generate directive</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-ng-generate-module"><span class="toc-number">2.1.4.</span> <span class="toc-text">4. ng generate module</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-ng-generate-pipe"><span class="toc-number">2.1.5.</span> <span class="toc-text">5. ng generate pipe</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-ng-generate-service"><span class="toc-number">2.1.6.</span> <span class="toc-text">6. ng generate service</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ng-build"><span class="toc-number">2.2.</span> <span class="toc-text">ng build</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ng-new-ng-init"><span class="toc-number">2.3.</span> <span class="toc-text">ng new || ng init</span></a></li></ol></li></ol>
+                </div>
+            
+        
+        
+            <h1 id="ng-cli-命令"><a href="#ng-cli-命令" class="headerlink" title="ng-cli 命令"></a>ng-cli 命令</h1><p>(@Angular CLI 终极指南:<a target="_blank" rel="external nofollow noopener noreferrer" href="https://segmentfault.com/a/1190000009771946">https://segmentfault.com/a/1190000009771946</a>)</p>
+<span id="more"></span>
+
+<hr>
+<ul>
+<li><p>ng new 项目名</p>
+</li>
+<li><p>ng generate class 类名                     ng g cl</p>
+</li>
+<li><p>ng generate component 组件名       ng g c</p>
+</li>
+<li><p>ng generate directive 指令名            ng g d</p>
+</li>
+<li><p>ng generate enum 枚举                   ng g e</p>
+</li>
+<li><p>ng generate module 模块名             ng g m</p>
+</li>
+<li><p>ng generate pipe 管道名                  ng g p</p>
+</li>
+<li><p>ng generate serveice 服务名             ng g s       ng g s teacher/service/teacher</p>
+</li>
+<li><p>ng generate interface 接口名            ng g i</p>
+</li>
+<li><p>ng start  (:4200)    ng s –port 4201    ng s</p>
+</li>
+<li><p>ng build –prod –aot</p>
+</li>
+<li><p>ng test</p>
+</li>
+<li><p>ng serve [ –open  -o ]</p>
+</li>
+<li><p>ng eject 用于将你的应用程序与 Angular CLI 分离</p>
+</li>
+</ul>
+<h1 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h1><h2 id="ng-generate"><a href="#ng-generate" class="headerlink" title="ng generate"></a>ng generate</h2><h3 id="1-ng-generate-class"><a href="#1-ng-generate-class" class="headerlink" title="1. ng generate class"></a>1. ng generate class</h3><p><strong>–spec</strong>: boolean, 默认为 false, 表示是否生成单元测试相关的 spec 文件.   ng generate class user-profile –spec</p>
+<h3 id="2-ng-generate-component"><a href="#2-ng-generate-component" class="headerlink" title="2. ng generate component"></a>2. ng generate component</h3><blockquote>
+<p><strong>–flat</strong>: boolean, 默认为 false, 表示在 src/app 目录下生成组件而不是在 src/app/componentName 目录中<br><strong>–inline-template</strong>: boolean, 默认为 false, 表示使用内联模板而不是使用独立的模板文件<br><strong>–inline-style</strong>: boolean, 默认为 false, 表示使用内联样式而不是使用独立的样式文件<br><strong>–prefix</strong>: boolean, 默认为 true, 使用 .angular-cli.json 配置的前缀作为组件选择器的前缀<br><strong>–spec</strong>: boolean, 默认为 true, 表示生成包含单元测试的 spec 文件<br><strong>–view-encapsulation</strong>: string, 用于设置组件的视图封装策略<br><strong>–change-detection</strong>: string, 用于设置组件的变化检测策略</p>
+</blockquote>
+<h3 id="3-ng-generate-directive"><a href="#3-ng-generate-directive" class="headerlink" title="3. ng generate directive"></a>3. ng generate directive</h3><blockquote>
+<p><strong>–flat: boolean</strong>, 默认为 true, 表示在 src/app 目录中生成指令而不是在 src/app/admin-link 目录下<br><strong>–prefix</strong>: boolean, 默认为 true, 使用 .angular-cli.json 配置的前缀作为指令选择器的前缀<br><strong>–spec</strong>: boolean, 默认为 true, 表示生成包含单元测试的 spec 文件</p>
+</blockquote>
+<h3 id="4-ng-generate-module"><a href="#4-ng-generate-module" class="headerlink" title="4. ng generate module"></a>4. ng generate module</h3><blockquote>
+<p><strong>–routing</strong>: boolean, 默认为 false, 表示生成一个额外包含路由信息的 AdminRoutingModule 模块，且该模块会被自动地导入到新建的模块中<br><strong>–spec</strong>: boolean, 默认为 false, 表示添加 src/app/admin/admin.module.spec.ts 单元测试文件</p>
+</blockquote>
+<h3 id="5-ng-generate-pipe"><a href="#5-ng-generate-pipe" class="headerlink" title="5. ng generate pipe"></a>5. ng generate pipe</h3><blockquote>
+<p><strong>–flat</strong>: boolean, 默认为 true, 表示在 src/app 目录中生成管道而不是在 src/app/convert-to-euro 目录下<br><strong>–spec</strong>: boolean, 默认为 true, 表示生成包含单元测试的 spec 文件</p>
+</blockquote>
+<h3 id="6-ng-generate-service"><a href="#6-ng-generate-service" class="headerlink" title="6. ng generate service"></a>6. ng generate service</h3><blockquote>
+<p><strong>–flat</strong>: boolean, 默认为 true, 表示在 src/app 目录中生成服务而不是在 src/app/backend-api 目录下<br><strong>–spec</strong>: boolean, 默认为 true, 表示生成包含单元测试的 spec 文件</p>
+</blockquote>
+<h2 id="ng-build"><a href="#ng-build" class="headerlink" title="ng build"></a>ng build</h2><p>–aot: 开启 ahead-of-time 编译<br>–base-href: string, 设置 index.html 文件中 <base> 元素的链接地址<br>–environment: string, 设置所使用的环境，默认为 dev<br>–output-path: string, 设置输出的路径<br>–target: string, 设置所使用的环境，默认为 development,意味着不进行代码压缩或混淆      ng build –target=production<br>–watch: boolean, 默认为 false, 开启 watch 模式，监听文件异动并自动重新构建</p>
+<p>Environments 让你能够自定义应用程序行为,你可以在 .angular-cli.json 文件中定义自己的 environments 文件。<br>默认的是：dev：environments/environment.ts。如果指定了不同的环境，构建过程将使用相应的环境：<br>ng build                                            Uses environments/environment.ts<br>ng build –environment=dev || ng build –env=dev    Also uses environments/environment.ts<br>ng build –environment=prod || ng build –env=prod   Uses environments/environment.prod.ts</p>
+<h2 id="ng-new-ng-init"><a href="#ng-new-ng-init" class="headerlink" title="ng new || ng init"></a>ng new || ng init</h2><p>–dry-run: boolean, 默认为 false, 若设置 dry-run 则不会创建任何文件<br>–verbose: boolean, 默认为 false<br>–link-cli: boolean, 默认为 false, 自动链接到 @angular/cli 包<br>–skip-install: boolean, 默认为 false, 表示跳过 npm install<br>–skip-git: boolean, 默认为 false, 表示该目录不初始化为 git 仓库<br>–skip-tests: boolean, 默认为 false, 表示不创建 tests 相关文件<br>–skip-commit: boolean, 默认为 false, 表示不进行初始提交<br>–directory: string, 用于设置创建的目录名，默认与应用程序的同名<br>–source-dir: string, 默认为 ‘src’, 用于设置源文件目录的名称<br>–style: string, 默认为 ‘css’, 用于设置选用的样式语法 (‘css’, ‘less’ or ‘scss’)<br>–prefix: string, 默认为 ‘app’, 用于设置创建新组件时，组件选择器使用的前缀<br>–mobile: boolean, 默认为 false,表示是否生成 Progressive Web App 应用程序<br>–routing: boolean, 默认为 false, 表示新增带有路由信息的模块，并添加到根模块中<br>–inline-style: boolean, 默认为 false, 表示当创建新的应用程序时，使用内联样式<br>–inline-template: boolean, 默认为 false, 表示当创建新的应用程序时，使用内联模板</p>
+
+            </div>
+        
+        <footer class="article-footer">
+        </footer>
+    </div>
+</article>
+
+
+    
+<nav id="article-nav">
+    
+        <a href="/blog/2019/04/11/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6-angular-2019-04-11-ng%E5%AE%9E%E7%8E%B0RadioGroup-CheckboxGroup%E7%BB%84%E4%BB%B6/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">上一篇</strong>
+            <div class="article-nav-title">
+                
+                    ng实现RadioGroup/CheckboxGroup组件
+                
+            </div>
+        </a>
+    
+    
+        <a href="/blog/2018/04/21/%E6%9C%8D%E5%8A%A1%E7%AB%AF-nodejs-2018-04-21-%E7%AE%80%E6%98%93nodeserver%EF%BC%8C%E5%90%ABmock/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">下一篇</strong>
+            <div class="article-nav-title">简易nodeserver，含mock</div>
+        </a>
+    
+</nav>
+
+
+
+
+
+    
+    
+
+
+
+
+<!-- baidu url auto push script -->
+<script type="text/javascript">
+    !function(){var e=/([http|https]:\/\/[a-zA-Z0-9\_\.]+\.baidu\.com)/gi,r=window.location.href,o=document.referrer;if(!e.test(r)){var n="//api.share.baidu.com/s.gif";o?(n+="?r="+encodeURIComponent(document.referrer),r&&(n+="&l="+r)):r&&(n+="?l="+r);var t=new Image;t.src=n}}(window);
+</script>
+</section>
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            zuitaibai &copy; 2021 
+            <a rel="external nofollow noopener noreferrer" target="_blank" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/80x15.png"></a>
+            <br> Powered by <a href="http://hexo.io/" target="_blank" rel="external nofollow noopener noreferrer">Hexo</a>. Theme - <a target="_blank" rel="external nofollow noopener noreferrer" href="https://github.com/zthxxx/hexo-theme-Wikitten">wikitten</a>
+            
+        </div>
+    </div>
+</footer>
+
+        
+
+    
+        
+<script src="/blog/libs/lightgallery/js/lightgallery.min.js"></script>
+
+        
+<script src="/blog/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+
+        
+<script src="/blog/libs/lightgallery/js/lg-pager.min.js"></script>
+
+        
+<script src="/blog/libs/lightgallery/js/lg-autoplay.min.js"></script>
+
+        
+<script src="/blog/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+
+        
+<script src="/blog/libs/lightgallery/js/lg-zoom.min.js"></script>
+
+        
+<script src="/blog/libs/lightgallery/js/lg-hash.min.js"></script>
+
+        
+<script src="/blog/libs/lightgallery/js/lg-share.min.js"></script>
+
+        
+<script src="/blog/libs/lightgallery/js/lg-video.min.js"></script>
+
+    
+    
+        
+<script src="/blog/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+
+    
+    
+        <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true,
+            TeX: {
+                equationNumbers: {
+                  autoNumber: 'AMS'
+                }
+            }
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script async src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+
+
+
+<!-- Custom Scripts -->
+
+<script src="/blog/js/main.js"></script>
+
+
+    </div>
+</body>
+</html>
