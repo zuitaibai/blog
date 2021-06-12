@@ -33,7 +33,6 @@ jobs:
           node-version: '12'
 
       - name: Cache node modules
-        # 设置包缓存目录，避免每次下载
         uses: actions/cache@v2
         id: cache
         with:
@@ -42,52 +41,31 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-node-
 
-      - name: Install Dependencies
-        if: steps.cache.outputs.cache-hit != 'true'
-        run: npm ci
-
-      # Deploy hexo blog website.
-      - name: Deploy
-        id: deploy
-        uses: sma11black/hexo-action@v1.0.4
-        with:
-          deploy_key: ${{ secrets.HEXO_DEPLOY_KEY }}
-          user_name: zuitaibai  # (or delete this input setting to use bot account)
-          user_email: gonghan007@163.com  # (or delete this input setting to use bot account)
-          commit_msg: ${{ github.event.head_commit.message }}  # (or delete this input setting to use hexo default settings)
-      # Use the output from the `deploy` step(use for test action)
-      - name: Get the output
+      - name: setup ssh-private-key & set git config
+        env:
+          ACTION_DEPLOY_KEY: ${{ secrets.HEXO_DEPLOY_KEY }}
         run: |
-          echo "${{ steps.deploy.outputs.notify }}"
+          mkdir -p /root/.ssh/
+          echo "$ACTION_DEPLOY_KEY" > /root/.ssh/id_rsa
+          chmod 600 /root/.ssh/id_rsa
+          ssh-keyscan -t rsa github.com >> /root/.ssh/known_hosts
+          ssh-keyscan -t rsa gitee.com >> /root/.ssh/known_hosts
+          git config --global user.email "gonghan007@163.com"
+          git config --global user.name "zuitaibai"
 
-
-
-
-      # - name: Setup Hexo
-        # env:
-          # ACTION_DEPLOY_KEY: ${{ secrets.HEXO_DEPLOY_KEY }}
-        # run: |
-          # mkdir -p ~/.ssh/
-          # echo "$ACTION_DEPLOY_KEY" > ~/.ssh/id_rsa
-          # chmod 700 ~/.ssh
-          # chmod 600 ~/.ssh/id_rsa
-          # ssh-keyscan github.com >> ~/.ssh/known_hosts
-          # ssh-keyscan gitee.com >> ~/.ssh/known_hosts
-          # git config --global user.email "gonghan007@163.com"
-          # git config --global user.name "zuitaibai"
-
-          # 原 npm install 在linux下有报错：hexo-cli中的深层依赖fsevents是mac平台下的，故报错。在此强制安装
-          # npm install hexo-cli -g -f
-
-          # 原 npm install 在linux下有报错：项目中的深层依赖fsevents是mac平台下的，故报错。在此强制安装
-          # npm install -f
+      - name: Install Dependencies
+        run: |
+          # 原 npm install 在linux下有报错：hexo-cli中的深层依赖fsevents是mac平台下的，故报错。在此强制安装 npm install hexo-cli -g -f
+          npm install hexo-cli -g
+          # 原 npm install 在linux下有报错：项目中的深层依赖fsevents是mac平台下的，故报错。在此强制安装 npm install -f
+          npm install
 
       # 基于项目config.yml中的deploy字段进行github和gitee同时布署
-      # - name: Deploy
-        # run: |
-          # rm -rf .deploy_git
-          # hexo clean
-          # hexo deploy
+      - name: Deploy
+        run: |
+          hexo clean
+          hexo deploy
+
 
       # 执行hexo generate后，手动进入public文件夹对github和gitee分别进行push（效果未试）。
       # - name: Generate files
