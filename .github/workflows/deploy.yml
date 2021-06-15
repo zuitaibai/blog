@@ -48,8 +48,8 @@ jobs:
           mkdir -p /root/.ssh/
           echo "$ACTION_DEPLOY_KEY" > /root/.ssh/id_rsa
           chmod 600 /root/.ssh/id_rsa
-          # ssh-keyscan -t rsa github.com >> /root/.ssh/known_hosts
-          # ssh-keyscan -t rsa gitee.com >> /root/.ssh/known_hosts
+          ssh-keyscan -t rsa github.com >> /root/.ssh/known_hosts
+          ssh-keyscan -t rsa gitee.com >> /root/.ssh/known_hosts
           git config --global user.email "gonghan007@163.com"
           git config --global user.name "zuitaibai"
 
