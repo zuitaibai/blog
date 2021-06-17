@@ -200,13 +200,6 @@
 
   
   <url>
-    <loc>https://zuitaibai.github.io/blog/tags/css%E5%B0%8F%E6%8A%80%E5%B7%A7/</loc>
-    <lastmod>2021-06-17</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://zuitaibai.github.io/blog/tags/js/</loc>
     <lastmod>2021-06-17</lastmod>
     <changefreq>daily</changefreq>
@@ -214,21 +207,14 @@
   </url>
   
   <url>
+    <loc>https://zuitaibai.github.io/blog/tags/css%E5%B0%8F%E6%8A%80%E5%B7%A7/</loc>
+    <lastmod>2021-06-17</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://zuitaibai.github.io/blog/tags/%E5%88%86%E9%A1%B5/</loc>
-    <lastmod>2021-06-17</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://zuitaibai.github.io/blog/tags/%E7%89%B9%E6%AE%8A%E7%AC%A6%E5%8F%B7/</loc>
-    <lastmod>2021-06-17</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://zuitaibai.github.io/blog/tags/%E9%80%9F%E6%9F%A5%E8%A1%A8/</loc>
     <lastmod>2021-06-17</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -305,6 +291,20 @@
   </url>
   
   <url>
+    <loc>https://zuitaibai.github.io/blog/tags/%E7%89%B9%E6%AE%8A%E7%AC%A6%E5%8F%B7/</loc>
+    <lastmod>2021-06-17</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://zuitaibai.github.io/blog/tags/%E9%80%9F%E6%9F%A5%E8%A1%A8/</loc>
+    <lastmod>2021-06-17</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://zuitaibai.github.io/blog/tags/%E8%A1%A8%E6%A0%BC/</loc>
     <lastmod>2021-06-17</lastmod>
     <changefreq>daily</changefreq>
@@ -340,6 +340,34 @@
   </url>
   
   <url>
+    <loc>https://zuitaibai.github.io/blog/tags/angular/</loc>
+    <lastmod>2021-06-17</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://zuitaibai.github.io/blog/tags/ng/</loc>
+    <lastmod>2021-06-17</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://zuitaibai.github.io/blog/tags/RadioGroup/</loc>
+    <lastmod>2021-06-17</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://zuitaibai.github.io/blog/tags/CheckboxGroup/</loc>
+    <lastmod>2021-06-17</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://zuitaibai.github.io/blog/tags/angular-cli/</loc>
     <lastmod>2021-06-17</lastmod>
     <changefreq>daily</changefreq>
@@ -354,7 +382,7 @@
   </url>
   
   <url>
-    <loc>https://zuitaibai.github.io/blog/tags/ng/</loc>
+    <loc>https://zuitaibai.github.io/blog/tags/calc/</loc>
     <lastmod>2021-06-17</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -382,27 +410,6 @@
   </url>
   
   <url>
-    <loc>https://zuitaibai.github.io/blog/tags/angular/</loc>
-    <lastmod>2021-06-17</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://zuitaibai.github.io/blog/tags/RadioGroup/</loc>
-    <lastmod>2021-06-17</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://zuitaibai.github.io/blog/tags/CheckboxGroup/</loc>
-    <lastmod>2021-06-17</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://zuitaibai.github.io/blog/tags/vim/</loc>
     <lastmod>2021-06-17</lastmod>
     <changefreq>daily</changefreq>
@@ -418,13 +425,6 @@
   
   <url>
     <loc>https://zuitaibai.github.io/blog/tags/%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6/</loc>
-    <lastmod>2021-06-17</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://zuitaibai.github.io/blog/tags/calc/</loc>
     <lastmod>2021-06-17</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -580,6 +580,13 @@
   </url>
   
   <url>
+    <loc>https://zuitaibai.github.io/blog/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/</loc>
+    <lastmod>2021-06-17</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://zuitaibai.github.io/blog/categories/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6/angular/</loc>
     <lastmod>2021-06-17</lastmod>
     <changefreq>daily</changefreq>
@@ -602,13 +609,6 @@
   
   <url>
     <loc>https://zuitaibai.github.io/blog/categories/%E6%9C%8D%E5%8A%A1%E7%AB%AF/nodejs/</loc>
-    <lastmod>2021-06-17</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://zuitaibai.github.io/blog/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/</loc>
     <lastmod>2021-06-17</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
