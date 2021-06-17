@@ -99,7 +99,7 @@ sitemap:
 nofollow:
   enable: true
   exclude:
-    - <your site url domain> # eg: zuitaibai.me
+    - https://zuitaibai.github.io/blog # eg: zuitaibai.me
 
 ## https://github.com/zuitaibai/hexo-directory-category
 auto_dir_categorize:

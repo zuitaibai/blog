@@ -69,6 +69,7 @@ comment:
     disqus: # enter disqus shortname here
     duoshuo: # enter duoshuo shortname here
     youyan: # enter youyan uid here
+    gitalk: true
 
 # Share
 share: default # options: jiathis, bdshare, addtoany, default
@@ -91,3 +92,5 @@ miscellaneous:
         twitter_id:
         google_plus:
     links:
+        张鑫旭: https://www.zhangxinxu.com/
+        阮一峰Es6: https://es6.ruanyifeng.com/
