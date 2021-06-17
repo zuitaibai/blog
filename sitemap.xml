@@ -340,7 +340,14 @@
   </url>
   
   <url>
-    <loc>https://zuitaibai.github.io/blog/tags/angular/</loc>
+    <loc>https://zuitaibai.github.io/blog/tags/angular-cli/</loc>
+    <lastmod>2021-06-17</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://zuitaibai.github.io/blog/tags/%E5%91%BD%E4%BB%A4/</loc>
     <lastmod>2021-06-17</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -348,6 +355,13 @@
   
   <url>
     <loc>https://zuitaibai.github.io/blog/tags/ng/</loc>
+    <lastmod>2021-06-17</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://zuitaibai.github.io/blog/tags/angular/</loc>
     <lastmod>2021-06-17</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -362,20 +376,6 @@
   
   <url>
     <loc>https://zuitaibai.github.io/blog/tags/CheckboxGroup/</loc>
-    <lastmod>2021-06-17</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://zuitaibai.github.io/blog/tags/angular-cli/</loc>
-    <lastmod>2021-06-17</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://zuitaibai.github.io/blog/tags/%E5%91%BD%E4%BB%A4/</loc>
     <lastmod>2021-06-17</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
