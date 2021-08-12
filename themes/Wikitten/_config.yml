@@ -66,13 +66,13 @@ history_control: # make you wiki has history version control in page
 
 # Comment
 comment:
+    gitalk: true
     disqus: # enter disqus shortname here
     duoshuo: # enter duoshuo shortname here
     youyan: # enter youyan uid here
-    gitalk: true
 
 # Share
-share: default # options: jiathis, bdshare, addtoany, default
+share: jiathis # options: jiathis, bdshare, addtoany, default
 
 # Plugins
 plugins:
