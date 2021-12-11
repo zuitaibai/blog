@@ -396,13 +396,6 @@
   </url>
   
   <url>
-    <loc>https://zuitaibai.github.io/blog/tags/vim/</loc>
-    <lastmod>2021-12-11</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://zuitaibai.github.io/blog/tags/react-router/</loc>
     <lastmod>2021-12-11</lastmod>
     <changefreq>daily</changefreq>
@@ -418,6 +411,13 @@
   
   <url>
     <loc>https://zuitaibai.github.io/blog/tags/router/</loc>
+    <lastmod>2021-12-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://zuitaibai.github.io/blog/tags/vim/</loc>
     <lastmod>2021-12-11</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -580,20 +580,6 @@
   </url>
   
   <url>
-    <loc>https://zuitaibai.github.io/blog/categories/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6/angular/</loc>
-    <lastmod>2021-12-11</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://zuitaibai.github.io/blog/categories/%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7%E5%92%8C%E6%8F%92%E4%BB%B6/IDE/</loc>
-    <lastmod>2021-12-11</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://zuitaibai.github.io/blog/categories/%E5%BC%80%E5%8F%91%E6%B5%81%E7%A8%8B/</loc>
     <lastmod>2021-12-11</lastmod>
     <changefreq>daily</changefreq>
@@ -608,14 +594,28 @@
   </url>
   
   <url>
-    <loc>https://zuitaibai.github.io/blog/categories/%E5%BC%80%E5%8F%91%E6%B5%81%E7%A8%8B/git/</loc>
+    <loc>https://zuitaibai.github.io/blog/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/</loc>
     <lastmod>2021-12-11</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://zuitaibai.github.io/blog/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/</loc>
+    <loc>https://zuitaibai.github.io/blog/categories/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6/angular/</loc>
+    <lastmod>2021-12-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://zuitaibai.github.io/blog/categories/%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7%E5%92%8C%E6%8F%92%E4%BB%B6/IDE/</loc>
+    <lastmod>2021-12-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://zuitaibai.github.io/blog/categories/%E5%BC%80%E5%8F%91%E6%B5%81%E7%A8%8B/git/</loc>
     <lastmod>2021-12-11</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -636,13 +636,6 @@
   </url>
   
   <url>
-    <loc>https://zuitaibai.github.io/blog/categories/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6/react/</loc>
-    <lastmod>2021-12-11</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://zuitaibai.github.io/blog/categories/%E7%BD%91%E7%BB%9C%E5%92%8C%E9%80%9A%E8%AE%AF/</loc>
     <lastmod>2021-12-11</lastmod>
     <changefreq>daily</changefreq>
@@ -651,6 +644,13 @@
   
   <url>
     <loc>https://zuitaibai.github.io/blog/categories/%E6%9C%8D%E5%8A%A1%E7%AB%AF/nginx/</loc>
+    <lastmod>2021-12-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://zuitaibai.github.io/blog/categories/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6/react/</loc>
     <lastmod>2021-12-11</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
