@@ -2,9 +2,37 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://zuitaibai.gitee.io/blog/tags/index.html</loc>
+    
+    <lastmod>2021-12-12</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://zuitaibai.gitee.io/blog/categories/index.html</loc>
+    
+    <lastmod>2021-12-12</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://zuitaibai.gitee.io/blog/about/index.html</loc>
+    
+    <lastmod>2021-12-12</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://zuitaibai.gitee.io/blog/2021/12/11/%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7%E5%92%8C%E6%8F%92%E4%BB%B6-IDE-2021-12-11-%E6%88%91%E7%9A%84ide%E5%BF%AB%E6%8D%B7%E9%94%AE%E9%80%9A%E7%94%A8%E8%AE%BE%E7%BD%AE%E5%A4%87%E5%BF%98/</loc>
     
-    <lastmod>2021-12-11</lastmod>
+    <lastmod>2021-12-12</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://zuitaibai.gitee.io/blog/README.html</loc>
+    
+    <lastmod>2021-12-12</lastmod>
     
   </url>
   
@@ -12,34 +40,6 @@
     <loc>https://zuitaibai.gitee.io/blog/2019/04/15/Ecmascript-2019-04-15-Es%E5%90%84%E7%89%88%E6%9C%AC%E6%96%B0%E7%89%B9%E6%80%A7%E4%B8%80%E8%A7%88/</loc>
     
     <lastmod>2021-12-11</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://zuitaibai.gitee.io/blog/about/index.html</loc>
-    
-    <lastmod>2021-06-17</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://zuitaibai.gitee.io/blog/categories/index.html</loc>
-    
-    <lastmod>2021-06-15</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://zuitaibai.gitee.io/blog/README.html</loc>
-    
-    <lastmod>2021-06-09</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://zuitaibai.gitee.io/blog/tags/index.html</loc>
-    
-    <lastmod>2021-06-09</lastmod>
     
   </url>
   
