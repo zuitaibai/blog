@@ -1,37 +1,38 @@
-'zuitaibai's blog' 
+'zuitaibai's blog'
 
-# ÃüÁî
-### $ hexo new [layout] <title> »òÕßÊÖ¶¯½øÈësourceÖĞcopy and edit new page
-    1. Èç¹ûÃ»ÓĞÉèÖÃ layout µÄ»°£¬Ä¬ÈÏÊ¹ÓÃ _config.yml ÖĞµÄ default_layout ²ÎÊı´úÌæ¡£Èç¹û±êÌâ°üº¬¿Õ¸ñµÄ»°£¬ÇëÊ¹ÓÃÒıºÅÀ¨ÆğÀ´
-    2. hexo new page --path about/me "About me"£º ´´½¨Ò»¸ö source/about/me.md ÎÄ¼ş£¬Í¬Ê± Front Matter ÖĞµÄ title Îª "About me"
+> hexo g -d
 
-### $ hexo g/generate Éú³É¾²Ì¬ÎÄ¼ş
-    ²ÎÊı-d/--deploy	ÎÄ¼şÉú³ÉºóÁ¢¼´²¿ÊğÍøÕ¾
+# å‘½ä»¤
+### $ hexo new [layout] <title> æˆ–è€…æ‰‹åŠ¨è¿›å…¥sourceä¸­copy and edit new page
+    1. å¦‚æœæ²¡æœ‰è®¾ç½® layout çš„è¯ï¼Œé»˜è®¤ä½¿ç”¨ _config.yml ä¸­çš„ default_layout å‚æ•°ä»£æ›¿ã€‚å¦‚æœæ ‡é¢˜åŒ…å«ç©ºæ ¼çš„è¯ï¼Œè¯·ä½¿ç”¨å¼•å·æ‹¬èµ·æ¥
+    2. hexo new page --path about/me "About me"ï¼š åˆ›å»ºä¸€ä¸ª source/about/me.md æ–‡ä»¶ï¼ŒåŒæ—¶ Front Matter ä¸­çš„ title ä¸º "About me"
 
-### $ hexo publish [layout] <filename> ·¢±í²İ¸å
+### $ hexo g/generate ç”Ÿæˆé™æ€æ–‡ä»¶
+    å‚æ•°-d/--deploy	æ–‡ä»¶ç”Ÿæˆåç«‹å³éƒ¨ç½²ç½‘ç«™
 
-### $ hexo server Æô¶¯·şÎñÆ÷¡£
-    Ä¬ÈÏÇé¿öÏÂ£¬·ÃÎÊÍøÖ·Îª£º http://localhost:4000/
+### $ hexo publish [layout] <filename> å‘è¡¨è‰ç¨¿
 
-### $ hexo d/deploy ²¿ÊğÍøÕ¾
-    -g/--generate	²¿ÊğÖ®Ç°Ô¤ÏÈÉú³É¾²Ì¬ÎÄ¼ş
+### $ hexo server å¯åŠ¨æœåŠ¡å™¨ã€‚
+    é»˜è®¤æƒ…å†µä¸‹ï¼Œè®¿é—®ç½‘å€ä¸ºï¼š http://localhost:4000/
 
-### $ hexo render <file1> [file2] ... äÖÈ¾ÎÄ¼ş
-    äÖÈ¾ÎÄ¼ş
+### $ hexo d/deploy éƒ¨ç½²ç½‘ç«™
+    -g/--generate	éƒ¨ç½²ä¹‹å‰é¢„å…ˆç”Ÿæˆé™æ€æ–‡ä»¶
 
-### $ hexo clean Çå³ı»º´æÎÄ¼ş (db.json) ºÍÒÑÉú³ÉµÄ¾²Ì¬ÎÄ¼ş (public)
-    ÔÚÄ³Ğ©Çé¿ö£¨ÓÈÆäÊÇ¸ü»»Ö÷Ìâºó£©£¬Èç¹û·¢ÏÖÄú¶ÔÕ¾µãµÄ¸ü¸ÄÎŞÂÛÈçºÎÒ²²»ÉúĞ§£¬Äú¿ÉÄÜĞèÒªÔËĞĞ¸ÃÃüÁî
+### $ hexo render <file1> [file2] ... æ¸²æŸ“æ–‡ä»¶
+    æ¸²æŸ“æ–‡ä»¶
 
-### $ hexo list <type> ÁĞ³öÍøÕ¾×ÊÁÏ
+### $ hexo clean æ¸…é™¤ç¼“å­˜æ–‡ä»¶ (db.json) å’Œå·²ç”Ÿæˆçš„é™æ€æ–‡ä»¶ (public)
+    åœ¨æŸäº›æƒ…å†µï¼ˆå°¤å…¶æ˜¯æ›´æ¢ä¸»é¢˜åï¼‰ï¼Œå¦‚æœå‘ç°æ‚¨å¯¹ç«™ç‚¹çš„æ›´æ”¹æ— è®ºå¦‚ä½•ä¹Ÿä¸ç”Ÿæ•ˆï¼Œæ‚¨å¯èƒ½éœ€è¦è¿è¡Œè¯¥å‘½ä»¤
 
-### $ hexo version ÏÔÊ¾ Hexo °æ±¾
+### $ hexo list <type> åˆ—å‡ºç½‘ç«™èµ„æ–™
 
-### $ hexo --draft ÏÔÊ¾ source/_drafts ÎÄ¼ş¼ĞÖĞµÄ²İ¸åÎÄÕÂ
+### $ hexo version æ˜¾ç¤º Hexo ç‰ˆæœ¬
 
-# ²¼¾Ö£¨Layout£©
-    £ü ²¼¾Ö £ü Â·¾¶ £ü
-    £ü ---- £ü --- £ü
-    £ü post £ü source/_posts £ü
-    £ü page £ü source £ü
-    £ü draft £ü source/_drafts £ü
+### $ hexo --draft æ˜¾ç¤º source/_drafts æ–‡ä»¶å¤¹ä¸­çš„è‰ç¨¿æ–‡ç« 
 
+# å¸ƒå±€ï¼ˆLayoutï¼‰
+    ï½œ å¸ƒå±€ ï½œ è·¯å¾„ ï½œ
+    ï½œ ---- ï½œ --- ï½œ
+    ï½œ post ï½œ source/_posts ï½œ
+    ï½œ page ï½œ source ï½œ
+    ï½œ draft ï½œ source/_drafts ï½œ

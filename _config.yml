@@ -24,7 +24,7 @@ timezone: 'Asia/Shanghai'
 
 # URL
 ## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project'
-url: https://zuitaibai.github.io/blog
+url: https://zuitaibai.gitee.io/blog  # https://zuitaibai.github.io/blog
 permalink: :year/:month/:day/:title/
 permalink_defaults:
 pretty_urls:
@@ -100,6 +100,8 @@ nofollow:
   enable: true
   exclude:
     - https://zuitaibai.github.io/blog # eg: zuitaibai.me
+    - https://zuitaibai.gitee.io/blog
+    - http://zuitaibai.gitee.io/blog
 
 ## https://github.com/zuitaibai/hexo-directory-category
 auto_dir_categorize:
@@ -153,9 +155,9 @@ theme: wikitten
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
-- type: git
-  repo: git@github.com:zuitaibai/blog.git
-  branch: main
+# - type: git
+#   repo: git@github.com:zuitaibai/blog.git
+#   branch: main
 
 - type: git
   repo: git@gitee.com:zuitaibai/blog.git
