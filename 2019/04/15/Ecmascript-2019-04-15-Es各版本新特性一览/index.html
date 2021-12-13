@@ -750,8 +750,8 @@
 
 <h1 id="Es6-（2015）"><a href="#Es6-（2015）" class="headerlink" title="Es6 （2015）"></a>Es6 （2015）</h1><ul>
 <li>类（class）</li>
-<li>模块化(ES Module)</li>
-<li>箭头（Arrow）函数</li>
+<li>模块化(ES Module) / import</li>
+<li>箭头函数（Arrow）</li>
 <li>函数参数默认值</li>
 <li>模板字符串</li>
 <li>解构赋值</li>
@@ -775,8 +775,7 @@
 </ul>
 <h1 id="ES8（2017）"><a href="#ES8（2017）" class="headerlink" title="ES8（2017）"></a>ES8（2017）</h1><ul>
 <li>async/await</li>
-<li>Object.values()</li>
-<li>Object.entries()</li>
+<li>Object.values() / Object.entries() / Object.keys()</li>
 <li>String padding (padStart, padEnd)</li>
 <li>函数参数列表结尾允许逗号</li>
 <li>Object.getOwnPropertyDescriptors() (获取一个对象的所有自身属性的描述符,如果没有任何自身属性，则返回空对象。)</li>
@@ -785,43 +784,43 @@
 </ul>
 <h1 id="ES9（2018）"><a href="#ES9（2018）" class="headerlink" title="ES9（2018）"></a>ES9（2018）</h1><ul>
 <li>异步迭代 (await可以和for…of循环一起使用，以串行的方式运行异步操作) for await (num of asyncGenerator()) {}</li>
-<li>模板字符串允许嵌套支持常见转义序列，移除对 ECMAScript 在带标签的模版字符串中转义序列的语法限制</li>
 <li>Promise.finally()</li>
 <li>Rest/Spread 属性</li>
-<li>正则表达式 Unicode 转义</li>
-<li>正则表达式命名捕获组</li>
-<li>正则表达式反向断言</li>
-<li>正则表达式dotAll模式</li>
+<li>扩展运算符可用于对象</li>
+<li>正则表达式 Unicode 转义 / 命名捕获组 / 反向断言 / dotAll模式</li>
+<li>模板字符串允许嵌套支持常见转义序列，移除对 ECMAScript 在带标签的模版字符串中转义序列的语法限制</li>
 </ul>
 <h1 id="ES10（2019）"><a href="#ES10（2019）" class="headerlink" title="ES10（2019）"></a>ES10（2019）</h1><ul>
 <li>Array.flat()和Array.flatMap()</li>
 <li>String.trimStart()和String.trimEnd()</li>
 <li>String.prototype.matchAll</li>
-<li>Symbol.prototype.description</li>
 <li>Object.fromEntries()</li>
+<li>Symbol.prototype.description</li>
 <li>可选 Catch (catch 的参数可省略)</li>
 <li>Function.prototype.toString() (现在返回精确字符，包括空格和注释)</li>
+<li>Array.prototype.sort() 更加稳定</li>
+<li>更加友好的 JSON.stringify；行分隔符（U + 2028）和段分隔符（U + 2029）符号现在允许在字符串文字中，与JSON匹配</li>
 </ul>
 <h1 id="ES11（2020）"><a href="#ES11（2020）" class="headerlink" title="ES11（2020）"></a>ES11（2020）</h1><ul>
-<li>Nullish coalescing Operator (空值处理) let a = user.u ?? ‘bbb’;</li>
-<li>Optional chaining（可选链） let u1 = user.childer?.name;</li>
+<li>空值合并运算符 ?? (let a = user.u ?? ‘bbb’)</li>
+<li>可选链 ?.  (a?.b?.c?.d)</li>
 <li>Promise.allSettled (返回一个在所有给定的promise已被决议或被拒绝后决议的promise，并带有一个对象数组，每个对象表示对应的promise结果)</li>
 <li>动态import</li>
-<li>export * as XX from ‘module’ 和 import * as XX from ‘module’</li>
-<li>新基本数据类型BigInt</li>
+<li>BigInt</li>
 <li>globalThis</li>
+<li>String.prototype.matchAll</li>
 </ul>
 <h1 id="ES12（2021）"><a href="#ES12（2021）" class="headerlink" title="ES12（2021）"></a>ES12（2021）</h1><ul>
+<li>逻辑赋值运算符 ||= &amp;&amp;= ??= (如：a ||= b, a &amp;&amp;= b, a ??= b)</li>
+<li>数字分隔符 1_000_000_000</li>
 <li>String.prototype.replaceAll</li>
 <li>Promise.any</li>
-<li>WeakRefs</li>
-<li>FinalizationRegistry</li>
-<li>逻辑运算符和赋值表达式 a ||= b, a &amp;&amp;= b, a ??= b</li>
-<li>数字分隔符 const money = 1_000_000_000;</li>
+<li>WeakRefs 允许您保留对另一个对象的弱引用，而不会阻止被弱引用对象被垃圾回收</li>
+<li>FinalizationRegistry 可以让你在对象被垃圾回收时执行回调</li>
 </ul>
 <h1 id="预-ES13（2022）"><a href="#预-ES13（2022）" class="headerlink" title="(预)ES13（2022）"></a>(预)ES13（2022）</h1><ul>
 <li>声明类的字段: 到目前为止，在ES规范中，类的字段定义和初始化是在类的构造函数中完成的。但是在新的提案中，类字段可以在类的顶层被定义和初始化</li>
-<li>私有方法和字段: 用#前缀来定义类的私有方法和字段</li>
+<li>私有方法和字段 #: 用#前缀来定义类的私有方法和字段</li>
 <li>类的静态公共方法和字段: 类增加了静态公共字段、静态私有方法和静态私有字段的特性</li>
 <li>正则匹配索引: 该提案提供了一个新的/dflag，以获得关于输入字符串中每个匹配的开始和索引位置结束的额外信息</li>
 <li>Top-level await: 顶层的await允许在异步函数之外使用await关键字。这个提案允许模块当做大型异步函数，所以这些ECMAScript模块可以等待资源加载，这样其他导入这些模块的模块在开始执行自己的代码之前也要等待资源加载完再去执行</li>
