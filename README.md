@@ -1,5 +1,9 @@
 'zuitaibai's blog'
 
+1. hexo g -d
+2. 目前已实现github摧送后自动部署。gitee需要手动到项目内->服务-> Gitee Pages-> 按钮：部署|更新 搞一下。
+其实也是可以搞一下的(用第三方个人实现的包)。？？？刚查了下，好像gitee可以免费“持续集成”了？？todo一下。
+
 > hexo g -d
 
 # 命令
