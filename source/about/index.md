@@ -32,10 +32,10 @@ comments: false
   .shufa{width:800px;}
 }
 .ssbs::first-letter{color:#000;/*text-shadow: 2px 3px 5px rgba(95,158,160,0.9), -2px -5px 10px rgba(255,0,0,0.5), 5px -7px 10px rgba(255,255,0,0.3), -2px 5px 10px rgba(0,128,0,0.2);;font-family: Arial; font-size: 90%;*/}
-.sb{animation: sss 2s .5s; display: inline-block; animation-iteration-count:infinite;line-height: 1; text-indent: 0;animation-timing-function: ease-out }
+.sb{animation: sss 800ms; display: inline-block; animation-iteration-count:infinite;line-height: 1; text-indent: 0;animation-timing-function: ease-out }
 @keyframes sss {
-    0%{}
-    10%{ transform: rotate(36deg)  scale(6,6) translate(-40px, -10px);}
+    5%{}
+    10%{ transform: rotate(36deg)/*  scale(6,6) translate(-40px, -10px)*/;}
     20%{ transform: rotate(72deg) ;color: rgba(0,0,0,.2); }
     30%{ transform: rotate(108deg); color: #000; }
     40%{ transform: rotate(144deg) skew(20deg)}
@@ -57,23 +57,23 @@ comments: false
             <div class="ssbs">&nbsp;桃花坞里桃花庵，桃花庵里桃花仙。 桃花仙</div>
             <div style="text-indent: 2em;">人种桃树，又折花枝换酒钱。</div>
             <div style="text-indent: 4em;">酒醒只在花前坐，酒醉还须花下眠。 花前<span class="sb">花</span></div>
-            <div style="text-indent: 6.3em;">後日复日，酒醉酒醒年复年。</div>
+            <div style="text-indent: 6.3em;">后日复日，酒醉酒醒年复年。</div>
             <div style="text-indent: 7.3em;">...</div>
             <div style="text-indent: 2.5em;">记得五陵豪杰墓，无酒无花锄作田。</div>
         </div>
         <div style="flex: none">
-            <img src="../logo.jpg" width="200" style="opacity: .1;"/>
+            <img src="../logo.jpg" width="200" style="opacity: .15;"/>
         </div>
     </div>
 </div>
-<div style="margin: 20px 90px 90px;border-bottom:3px dashed #ccc; "></div>
+<div style="margin: 90px 90px 20px;border-bottom:3px dashed #ccc; "></div>
 
 #### 基本信息
 
 - 籍贯：河北张家口
 - 年龄：1982 （婚育ed）
 - 性别：男
-- 职业：FE
+- 职业：前端工程师
 
 #### 业余或喜好（喜好 != 实现）
 
