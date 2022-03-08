@@ -210,9 +210,9 @@
     <category term="angular" scheme="https://zuitaibai.gitee.io/blog/categories/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6/angular/"/>
     
     
-    <category term="命令" scheme="https://zuitaibai.gitee.io/blog/tags/%E5%91%BD%E4%BB%A4/"/>
-    
     <category term="angular-cli" scheme="https://zuitaibai.gitee.io/blog/tags/angular-cli/"/>
+    
+    <category term="命令" scheme="https://zuitaibai.gitee.io/blog/tags/%E5%91%BD%E4%BB%A4/"/>
     
     <category term="ng" scheme="https://zuitaibai.gitee.io/blog/tags/ng/"/>
     
@@ -351,9 +351,9 @@
     <category term="IDE" scheme="https://zuitaibai.gitee.io/blog/categories/%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7%E5%92%8C%E6%8F%92%E4%BB%B6/IDE/"/>
     
     
-    <category term="vim" scheme="https://zuitaibai.gitee.io/blog/tags/vim/"/>
-    
     <category term="命令" scheme="https://zuitaibai.gitee.io/blog/tags/%E5%91%BD%E4%BB%A4/"/>
+    
+    <category term="vim" scheme="https://zuitaibai.gitee.io/blog/tags/vim/"/>
     
   </entry>
   
